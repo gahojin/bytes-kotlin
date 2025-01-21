@@ -169,3 +169,7 @@ inline fun ByteArray.putLongLe(index: Int, source: Long) {
 inline fun ByteArray.putLong(index: Int, source: ULong) = putLong(index, source.toLong())
 
 inline fun ByteArray.putLongLe(index: Int, source: ULong) = putLongLe(index, source.toLong())
+
+inline fun ByteArray.put(index: Int, source: Bytes, fromIndex: Int = 0, toIndex: Int = source.size) {
+    source.copyInto(this, index, fromIndex, toIndex)
+}

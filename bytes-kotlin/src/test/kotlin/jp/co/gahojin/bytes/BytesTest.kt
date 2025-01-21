@@ -120,17 +120,17 @@ class BytesTest : FunSpec({
         arr shouldBe ubyteArrayOf(0x07u, 0x08u, 0x09u)
     }
 
-    test("copyRange") {
+    test("copyOfRange") {
         val sut = Bytes.allocate(10) { it.toUByte() }
-        sut.copyRange(0, 5) shouldBe Bytes.from(0x00u, 0x01u, 0x02u, 0x03u, 0x04u)
-        sut.copyRange(2, 5) shouldBe Bytes.from(0x02u, 0x03u, 0x04u)
+        sut.copyOfRange(0, 5) shouldBe Bytes.from(0x00u, 0x01u, 0x02u, 0x03u, 0x04u)
+        sut.copyOfRange(2, 5) shouldBe Bytes.from(0x02u, 0x03u, 0x04u)
 
         // 範囲外
         assertThrows<IndexOutOfBoundsException> {
-            sut.copyRange(2, 11)
+            sut.copyOfRange(2, 11)
         }
         assertThrows<IndexOutOfBoundsException> {
-            sut.copyRange(-1, 4)
+            sut.copyOfRange(-1, 4)
         }
     }
 
@@ -157,6 +157,20 @@ class BytesTest : FunSpec({
         // 範囲外
         assertThrows<NegativeArraySizeException> {
             sut.copyOf(-1)
+        }
+    }
+
+    test("copyInto") {
+        checkAll(Arb.byteArray(Arb.int(min = 2, max = 256), Arb.byte())) { a ->
+            val buf = ByteArray(a.size + 2)
+            val ubuf = UByteArray(a.size + 2)
+            val sut = Bytes.wrap(a)
+
+            sut.copyInto(buf, 2, 1, a.size)
+            buf.copyOfRange(2, a.size + 1) shouldBe a.copyOfRange(1, a.size)
+
+            sut.copyInto(ubuf, 2, 1, a.size)
+            ubuf.copyOfRange(2, a.size + 1) shouldBe a.asUByteArray().copyOfRange(1, a.size)
         }
     }
 

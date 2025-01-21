@@ -3,8 +3,8 @@ package jp.co.gahojin.bytes
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.property.Arb
-import io.kotest.property.arbitrary.int
-import io.kotest.property.arbitrary.uInt
+import io.kotest.property.arbitrary.*
+import io.kotest.property.arbitrary.byteArray
 import io.kotest.property.checkAll
 
 class UByteArrayStoreTest : FunSpec({
@@ -157,6 +157,20 @@ class UByteArrayStoreTest : FunSpec({
             val sut = UByteArray(8)
             sut.putLongLe(0, a)
             sut.getULongLe(0) shouldBe a
+        }
+    }
+
+    test("put(Bytes)") {
+        checkAll(Arb.uByteArray(Arb.int(min = 10, max = 256), Arb.uByte())) { a ->
+            val sut = Bytes.wrap(a)
+            val buf = UByteArray(a.size)
+
+            buf.put(0, sut)
+            buf shouldBe a
+
+            buf.fill(0u)
+            buf.put(1, sut, 2, 10)
+            buf.copyOfRange(1, 9) shouldBe a.copyOfRange(2, 10)
         }
     }
 })
