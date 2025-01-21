@@ -2,6 +2,9 @@ package jp.co.gahojin.bytes
 
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
+import io.kotest.property.Arb
+import io.kotest.property.checkAll
+import kotlin.math.pow
 
 class UtilTest : FunSpec({
     test("Byte.shl") {
@@ -32,5 +35,37 @@ class UtilTest : FunSpec({
         val sut: UByte = 0xa5u
         sut shr 1 shouldBe 0x52u
         sut shr 2 shouldBe 0x29u
+    }
+
+    test("UByte.and") {
+        val sut: UByte = 0xa5u
+        sut and 0x3fu shouldBe 0x25u
+        sut and 0x3fuL shouldBe 0x25uL
+    }
+
+    test("Int.unsignedToSigned") {
+        // 変数サイズと同一サイズの場合は、値が変わらないこと
+        checkAll<Int> { a ->
+            a.unsignedToSigned(32) shouldBe a
+        }
+
+        checkAll(Arb.int24()) { a ->
+            a.unsignedToSigned(24) shouldBe a
+        }
+
+        checkAll<Short> { a ->
+            a.toInt().unsignedToSigned(16) shouldBe a
+        }
+    }
+
+    test("Long.unsignedToSigned") {
+        // 変数サイズと同一サイズの場合は、値が変わらないこと
+        checkAll<Long> { a ->
+            a.unsignedToSigned(64) shouldBe a
+        }
+
+        checkAll<Int> { a ->
+            a.toLong().unsignedToSigned(32) shouldBe a
+        }
     }
 })

@@ -96,6 +96,38 @@ class ByteArrayStoreTest : FunSpec({
         }
     }
 
+    test("getInt24") {
+        checkAll(Arb.int24()) { a ->
+            val sut = ByteArray(3)
+            sut.putInt24(0, a)
+            sut.getInt24(0) shouldBe a
+        }
+    }
+
+    test("getInt24Le") {
+        checkAll(Arb.int24()) { a ->
+            val sut = ByteArray(3)
+            sut.putInt24Le(0, a)
+            sut.getInt24Le(0) shouldBe a
+        }
+    }
+
+    test("getUInt24") {
+        checkAll(Arb.uInt24()) { a ->
+            val sut = ByteArray(3)
+            sut.putInt24(0, a)
+            sut.getUInt24(0) shouldBe a
+        }
+    }
+
+    test("getUInt24Le") {
+        checkAll(Arb.uInt24()) { a ->
+            val sut = ByteArray(3)
+            sut.putInt24Le(0, a)
+            sut.getUInt24Le(0) shouldBe a
+        }
+    }
+
     test("getLong") {
         checkAll<Long> { a ->
             val sut = ByteArray(8)

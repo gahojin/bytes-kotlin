@@ -18,6 +18,14 @@ inline fun UByteArray.getUInt(index: Int): UInt = asByteArray().getUInt(index)
 
 inline fun UByteArray.getUIntLe(index: Int): UInt = asByteArray().getUIntLe(index)
 
+inline fun UByteArray.getInt24(index: Int): Int = asByteArray().getInt24(index)
+
+inline fun UByteArray.getInt24Le(index: Int): Int = asByteArray().getInt24Le(index)
+
+inline fun UByteArray.getUInt24(index: Int): UInt = asByteArray().getUInt24(index)
+
+inline fun UByteArray.getUInt24Le(index: Int): UInt = asByteArray().getUInt24Le(index)
+
 inline fun UByteArray.getLong(index: Int): Long = asByteArray().getLong(index)
 
 inline fun UByteArray.getLongLe(index: Int): Long = asByteArray().getLongLe(index)
@@ -49,6 +57,14 @@ inline fun UByteArray.putIntLe(index: Int, source: Int) = asByteArray().putIntLe
 inline fun UByteArray.putInt(index: Int, source: UInt) = asByteArray().putInt(index, source)
 
 inline fun UByteArray.putIntLe(index: Int, source: UInt) = asByteArray().putIntLe(index, source)
+
+inline fun UByteArray.putInt24(index: Int, source: Int) = asByteArray().putInt24(index, source)
+
+inline fun UByteArray.putInt24Le(index: Int, source: Int) = asByteArray().putInt24Le(index, source)
+
+inline fun UByteArray.putInt24(index: Int, source: UInt) = asByteArray().putInt24(index, source)
+
+inline fun UByteArray.putInt24Le(index: Int, source: UInt) = asByteArray().putInt24Le(index, source)
 
 inline fun UByteArray.putLong(index: Int, source: Long) = asByteArray().putLong(index, source)
 
