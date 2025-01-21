@@ -106,6 +106,14 @@ class Bytes private constructor(
 
     fun getUIntLe(offset: Int): UInt = storage.getUIntLe(offset)
 
+    fun getInt24(offset: Int): Int = storage.getInt24(offset)
+
+    fun getInt24Le(offset: Int): Int = storage.getInt24Le(offset)
+
+    fun getUInt24(offset: Int): UInt = storage.getUInt24(offset)
+
+    fun getUInt24Le(offset: Int): UInt = storage.getUInt24Le(offset)
+
     fun getLong(offset: Int): Long = storage.getLong(offset)
 
     fun getLongLe(offset: Int): Long = storage.getLongLe(offset)
@@ -161,6 +169,26 @@ class Bytes private constructor(
 
     fun putIntLe(offset: Int, source: UInt): Bytes {
         storage.putIntLe(offset, source)
+        return this
+    }
+
+    fun putInt24(offset: Int, source: Int): Bytes {
+        storage.putInt24(offset, source)
+        return this
+    }
+
+    fun putInt24Le(offset: Int, source: Int): Bytes {
+        storage.putInt24Le(offset, source)
+        return this
+    }
+
+    fun putInt24(offset: Int, source: UInt): Bytes {
+        storage.putInt24(offset, source)
+        return this
+    }
+
+    fun putInt24Le(offset: Int, source: UInt): Bytes {
+        storage.putInt24Le(offset, source)
         return this
     }
 

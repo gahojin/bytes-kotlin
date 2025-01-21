@@ -34,6 +34,34 @@ inline fun ByteArray.getUInt(index: Int): UInt = getInt(index).toUInt()
 
 inline fun ByteArray.getUIntLe(index: Int): UInt = getIntLe(index).toUInt()
 
+inline fun ByteArray.getInt24(index: Int): Int {
+    val t = (this[index] shl 16) or
+            (this[index + 1] shl 8) or
+            (this[index + 2] and 0xff)
+    return t.unsignedToSigned(24)
+}
+
+inline fun ByteArray.getInt24Le(index: Int): Int {
+    val t = (this[index] and 0xff) or
+            (this[index + 1] shl 8) or
+            (this[index + 2] shl 16)
+    return t.unsignedToSigned(24)
+}
+
+inline fun ByteArray.getUInt24(index: Int): UInt {
+    val t = (this[index] shl 16) or
+            (this[index + 1] shl 8) or
+            (this[index + 2] and 0xff)
+    return t.toUInt()
+}
+
+inline fun ByteArray.getUInt24Le(index: Int): UInt {
+    val t = (this[index] and 0xff) or
+            (this[index + 1] shl 8) or
+            (this[index + 2] shl 16)
+    return t.toUInt()
+}
+
 inline fun ByteArray.getLong(index: Int): Long {
     return (this[index] and 0xffL shl 56) or
             (this[index + 1] and 0xffL shl 48) or
@@ -99,6 +127,22 @@ inline fun ByteArray.putIntLe(index: Int, source: Int) {
 inline fun ByteArray.putInt(index: Int, source: UInt) = putInt(index, source.toInt())
 
 inline fun ByteArray.putIntLe(index: Int, source: UInt) = putIntLe(index, source.toInt())
+
+inline fun ByteArray.putInt24(index: Int, source: Int) {
+    this[index] = (source ushr 16).toByte()
+    this[index + 1] = (source ushr 8).toByte()
+    this[index + 2] = source.toByte()
+}
+
+inline fun ByteArray.putInt24Le(index: Int, source: Int) {
+    this[index] = source.toByte()
+    this[index + 1] = (source ushr 8).toByte()
+    this[index + 2] = (source ushr 16).toByte()
+}
+
+inline fun ByteArray.putInt24(index: Int, source: UInt) = putInt24(index, source.toInt())
+
+inline fun ByteArray.putInt24Le(index: Int, source: UInt) = putInt24Le(index, source.toInt())
 
 inline fun ByteArray.putLong(index: Int, source: Long) {
     this[index] = (source ushr 56).toByte()

@@ -342,6 +342,82 @@ class BytesTest : FunSpec({
         }
     }
 
+    test("getInt24") {
+        checkAll(Arb.int24()) { a ->
+            val buf = ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN)
+            buf.putInt(a)
+            val sut = Bytes.from(buf)
+            sut.getInt24(1) shouldBe a
+        }
+
+        val sut = Bytes.allocate(4)
+        // 範囲外
+        assertThrows<ArrayIndexOutOfBoundsException> {
+            sut.getInt24(-1)
+        }
+        assertThrows<ArrayIndexOutOfBoundsException> {
+            // 2 + 4byte = over
+            sut.getInt24(2)
+        }
+    }
+
+    test("getInt24Le") {
+        checkAll(Arb.int24()) { a ->
+            val buf = ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN)
+            buf.putInt(a)
+            val sut = Bytes.from(buf)
+            sut.getInt24Le(0) shouldBe a
+        }
+
+        val sut = Bytes.allocate(4)
+        // 範囲外
+        assertThrows<ArrayIndexOutOfBoundsException> {
+            sut.getInt24Le(-1)
+        }
+        assertThrows<ArrayIndexOutOfBoundsException> {
+            // 2 + 3byte = over
+            sut.getInt24Le(2)
+        }
+    }
+
+    test("getUInt24") {
+        checkAll(Arb.uInt24()) { a ->
+            val buf = ByteBuffer.allocate(4).order(ByteOrder.BIG_ENDIAN)
+            buf.putInt(a.toInt())
+            val sut = Bytes.from(buf)
+            sut.getUInt24(1) shouldBe a
+        }
+
+        val sut = Bytes.allocate(4)
+        // 範囲外
+        assertThrows<ArrayIndexOutOfBoundsException> {
+            sut.getUInt24(-1)
+        }
+        assertThrows<ArrayIndexOutOfBoundsException> {
+            // 2 + 3byte = over
+            sut.getUInt24(2)
+        }
+    }
+
+    test("getUInt24Le") {
+        checkAll(Arb.uInt24()) { a ->
+            val buf = ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN)
+            buf.putInt(a.toInt())
+            val sut = Bytes.from(buf)
+            sut.getUInt24Le(0) shouldBe a
+        }
+
+        val sut = Bytes.allocate(4)
+        // 範囲外
+        assertThrows<ArrayIndexOutOfBoundsException> {
+            sut.getUInt24Le(-1)
+        }
+        assertThrows<ArrayIndexOutOfBoundsException> {
+            // 2 + 3byte = over
+            sut.getUInt24Le(2)
+        }
+    }
+
     test("getLong") {
         checkAll(Arb.long()) { a ->
             val buf = ByteBuffer.allocate(8).order(ByteOrder.BIG_ENDIAN)
