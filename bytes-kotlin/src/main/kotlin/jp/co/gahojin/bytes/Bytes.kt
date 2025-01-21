@@ -58,7 +58,7 @@ class Bytes private constructor(
      */
     fun uarray(): UByteArray = storage.asUByteArray()
 
-    fun copyRange(fromIndex: Int, toIndex: Int): Bytes {
+    fun copyOfRange(fromIndex: Int, toIndex: Int): Bytes {
         return Bytes(storage.copyOfRange(fromIndex, toIndex))
     }
 
@@ -84,6 +84,17 @@ class Bytes private constructor(
                 }
             }
         }
+    }
+
+    @JvmOverloads
+    fun copyInto(dest: ByteArray, offset: Int = 0, fromIndex: Int = 0, toIndex: Int = dest.size): Bytes {
+        System.arraycopy(storage, fromIndex, dest, offset, toIndex - fromIndex)
+        return this
+    }
+
+    fun copyInto(dest: UByteArray, offset: Int = 0, fromIndex: Int = 0, toIndex: Int = dest.size): Bytes {
+        System.arraycopy(storage, fromIndex, dest.asByteArray(), offset, toIndex - fromIndex)
+        return this
     }
 
     fun getByte(offset: Int): Byte = storage[offset]
