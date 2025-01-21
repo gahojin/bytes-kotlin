@@ -3,7 +3,7 @@
 Kotlin向けバイト配列操作ライブラリ
 
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/gahojin/bytes-kotlin/build.yml)](https://github.com/gahojin/bytes-kotlin/actions/workflows/build.yml)
-[![Maven Central Version](https://img.shields.io/maven-central/v/jp.co.gahojin.bytes-kotlin/bytes-kotlin)](https://central.sonatype.com/artifact/io.github.crow-misia.libyuv/libyuv-android)
+[![Maven Central Version](https://img.shields.io/maven-central/v/jp.co.gahojin.bytes-kotlin/bytes-kotlin)](https://central.sonatype.com/artifact/jp.co.gahojin.bytes-kotlin/bytes-kotlin)
 [![GitHub License](https://img.shields.io/github/license/gahojin/bytes-kotlin)](LICENSE)
 
 ## Get Started
@@ -12,7 +12,7 @@ Kotlin向けバイト配列操作ライブラリ
 
 依存を追加します
 
-`${latest.version}` is [![Maven Central Version](https://img.shields.io/maven-central/v/jp.co.gahojin.bytes-kotlin/bytes-kotlin)](https://central.sonatype.com/artifact/io.github.crow-misia.libyuv/libyuv-android)
+`${latest.version}` is [![Maven Central Version](https://img.shields.io/maven-central/v/jp.co.gahojin.bytes-kotlin/bytes-kotlin)](https://central.sonatype.com/artifact/jp.co.gahojin.bytes-kotlin/bytes-kotlin)
 
 ```groovy
 dependencies {
