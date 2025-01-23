@@ -220,6 +220,16 @@ class Bytes private constructor(
         return this
     }
 
+    fun putInt(offset: Int, source: Int, length: Int): Bytes {
+        storage.putInt(offset, source, length)
+        return this
+    }
+
+    fun putIntLe(offset: Int, source: Int, length: Int): Bytes {
+        storage.putIntLe(offset, source, length)
+        return this
+    }
+
     fun putInt(offset: Int, source: UInt): Bytes {
         storage.putInt(offset, source)
         return this
@@ -227,6 +237,16 @@ class Bytes private constructor(
 
     fun putIntLe(offset: Int, source: UInt): Bytes {
         storage.putIntLe(offset, source)
+        return this
+    }
+
+    fun putInt(offset: Int, source: UInt, length: Int): Bytes {
+        storage.putInt(offset, source, length)
+        return this
+    }
+
+    fun putIntLe(offset: Int, source: UInt, length: Int): Bytes {
+        storage.putIntLe(offset, source, length)
         return this
     }
 
@@ -260,6 +280,16 @@ class Bytes private constructor(
         return this
     }
 
+    fun putLong(offset: Int, source: Long, length: Int): Bytes {
+        storage.putLong(offset, source, length)
+        return this
+    }
+
+    fun putLongLe(offset: Int, source: Long, length: Int): Bytes {
+        storage.putLongLe(offset, source, length)
+        return this
+    }
+
     fun putLong(offset: Int, source: ULong): Bytes {
         storage.putLong(offset, source)
         return this
@@ -267,6 +297,16 @@ class Bytes private constructor(
 
     fun putLongLe(offset: Int, source: ULong): Bytes {
         storage.putLongLe(offset, source)
+        return this
+    }
+
+    fun putLong(offset: Int, source: ULong, length: Int): Bytes {
+        storage.putLong(offset, source, length)
+        return this
+    }
+
+    fun putLongLe(offset: Int, source: ULong, length: Int): Bytes {
+        storage.putLongLe(offset, source, length)
         return this
     }
 

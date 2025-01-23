@@ -3,10 +3,7 @@ package jp.co.gahojin.bytes
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.property.Arb
-import io.kotest.property.arbitrary.byte
-import io.kotest.property.arbitrary.byteArray
-import io.kotest.property.arbitrary.int
-import io.kotest.property.arbitrary.uInt
+import io.kotest.property.arbitrary.*
 import io.kotest.property.checkAll
 
 class ByteArrayStoreTest : FunSpec({
@@ -82,6 +79,22 @@ class ByteArrayStoreTest : FunSpec({
         }
     }
 
+    test("getInt/putInt with length") {
+        checkAll(Arb.int(min = Short.MIN_VALUE.toInt(), max = Short.MAX_VALUE.toInt()), Arb.int(min = 2, max = 4)) { a, b ->
+            val sut = ByteArray(4)
+            sut.putInt(0, a, b)
+            sut.getInt(0, b) shouldBe a
+        }
+    }
+
+    test("getIntLe/putIntLe with length") {
+        checkAll(Arb.int(min = Short.MIN_VALUE.toInt(), max = Short.MAX_VALUE.toInt()), Arb.int(min = 2, max = 4)) { a, b ->
+            val sut = ByteArray(4)
+            sut.putIntLe(0, a, b)
+            sut.getIntLe(0, b) shouldBe a
+        }
+    }
+
     test("getUInt") {
         checkAll<UInt> { a ->
             val sut = ByteArray(4)
@@ -95,6 +108,22 @@ class ByteArrayStoreTest : FunSpec({
             val sut = ByteArray(4)
             sut.putIntLe(0, a)
             sut.getUIntLe(0) shouldBe a
+        }
+    }
+
+    test("getUInt/putInt with length") {
+        checkAll(Arb.uInt(min = UShort.MIN_VALUE.toUInt(), max = UShort.MAX_VALUE.toUInt()), Arb.int(min = 2, max = 4)) { a, b ->
+            val sut = ByteArray(4)
+            sut.putInt(0, a, b)
+            sut.getUInt(0, b) shouldBe a
+        }
+    }
+
+    test("getUIntLe/putIntLe with length") {
+        checkAll(Arb.uInt(min = UShort.MIN_VALUE.toUInt(), max = UShort.MAX_VALUE.toUInt()), Arb.int(min = 2, max = 4)) { a, b ->
+            val sut = ByteArray(4)
+            sut.putIntLe(0, a, b)
+            sut.getUIntLe(0, b) shouldBe a
         }
     }
 
@@ -146,6 +175,22 @@ class ByteArrayStoreTest : FunSpec({
         }
     }
 
+    test("getLong/putLong with length") {
+        checkAll(Arb.long(min = Int.MIN_VALUE.toLong(), max = Int.MAX_VALUE.toLong()), Arb.int(min = 4, max = 8)) { a, b ->
+            val sut = ByteArray(8)
+            sut.putLong(0, a, b)
+            sut.getLong(0, b) shouldBe a
+        }
+    }
+
+    test("getLongLe/putLongLe with length") {
+        checkAll(Arb.long(min = Int.MIN_VALUE.toLong(), max = Int.MAX_VALUE.toLong()), Arb.int(min = 4, max = 8)) { a, b ->
+            val sut = ByteArray(8)
+            sut.putLongLe(0, a, b)
+            sut.getLongLe(0, b) shouldBe a
+        }
+    }
+
     test("getULong") {
         checkAll<ULong> { a ->
             val sut = ByteArray(8)
@@ -159,6 +204,22 @@ class ByteArrayStoreTest : FunSpec({
             val sut = ByteArray(8)
             sut.putLongLe(0, a)
             sut.getULongLe(0) shouldBe a
+        }
+    }
+
+    test("getULong/putLong with length") {
+        checkAll(Arb.uLong(min = UInt.MIN_VALUE.toULong(), max = UInt.MAX_VALUE.toULong()), Arb.int(min = 4, max = 8)) { a, b ->
+            val sut = ByteArray(8)
+            sut.putLong(0, a, b)
+            sut.getULong(0, b) shouldBe a
+        }
+    }
+
+    test("getULongLe/putLongLe with length") {
+        checkAll(Arb.uLong(min = UInt.MIN_VALUE.toULong(), max = UInt.MAX_VALUE.toULong()), Arb.int(min = 4, max = 8)) { a, b ->
+            val sut = ByteArray(8)
+            sut.putLongLe(0, a, b)
+            sut.getULongLe(0, b) shouldBe a
         }
     }
 
