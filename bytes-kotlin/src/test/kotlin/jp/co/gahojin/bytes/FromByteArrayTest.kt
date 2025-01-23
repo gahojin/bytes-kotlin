@@ -6,7 +6,7 @@ import io.kotest.property.Arb
 import io.kotest.property.arbitrary.*
 import io.kotest.property.checkAll
 
-class ByteArrayStoreTest : FunSpec({
+class FromByteArrayTest : FunSpec({
     test("getShort") {
         checkAll<Short> { a ->
             val sut = ByteArray(2)
