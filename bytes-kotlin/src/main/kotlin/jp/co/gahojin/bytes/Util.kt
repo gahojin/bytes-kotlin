@@ -23,7 +23,11 @@ inline fun Int.unsignedToSigned(size: Int): Int {
     return takeIf { this and t == 0 } ?: (-1 * (t - (this and t - 1)))
 }
 
+inline fun UInt.unsignedToSigned(size: Int): Int = toInt().unsignedToSigned(size)
+
 inline fun Long.unsignedToSigned(size: Int): Long {
     val t = 1L shl (size - 1)
     return takeIf { this and t == 0L } ?: (-1 * (t - (this and t - 1L)))
 }
+
+inline fun ULong.unsignedToSigned(size: Int): Long = toLong().unsignedToSigned(size)
