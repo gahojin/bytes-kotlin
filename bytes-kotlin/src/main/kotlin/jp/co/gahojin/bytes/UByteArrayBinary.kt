@@ -36,13 +36,9 @@ inline fun UByteArray.shr(bitCount: Int, inPlace: Boolean = false): UByteArray {
     return asByteArray().shr(bitCount, inPlace).asUByteArray()
 }
 
-inline fun UByteArray.getBit(bitIndex: Int): Boolean {
-    return asByteArray().getBit(bitIndex)
-}
+inline fun UByteArray.getBit(bitIndex: Int): Boolean = asByteArray().getBit(bitIndex)
 
-inline fun UByteArray.getBitLe(bitIndex: Int): Boolean {
-    return asByteArray().getBitLe(bitIndex)
-}
+inline fun UByteArray.getBitLe(bitIndex: Int): Boolean = asByteArray().getBitLe(bitIndex)
 
 inline fun UByteArray.switchBit(bitIndex: Int, value: Boolean, inPlace: Boolean = false): UByteArray {
     return asByteArray().switchBit(bitIndex, value, inPlace).asUByteArray()

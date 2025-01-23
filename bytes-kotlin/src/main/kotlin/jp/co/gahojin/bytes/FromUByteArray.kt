@@ -107,5 +107,5 @@ inline fun UByteArray.putLong(index: Int, source: ULong, length: Int) = asByteAr
 inline fun UByteArray.putLongLe(index: Int, source: ULong, length: Int) = asByteArray().putLongLe(index, source, length)
 
 inline fun UByteArray.put(index: Int, source: Bytes, fromIndex: Int = 0, toIndex: Int = source.size) {
-    source.copyInto(this, index, fromIndex, toIndex)
+    asByteArray().put(index, source, fromIndex, toIndex)
 }
