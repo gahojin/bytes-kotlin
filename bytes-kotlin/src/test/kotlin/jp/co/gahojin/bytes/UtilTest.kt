@@ -4,7 +4,6 @@ import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.property.Arb
 import io.kotest.property.checkAll
-import kotlin.math.pow
 
 class UtilTest : FunSpec({
     test("Byte.shl") {

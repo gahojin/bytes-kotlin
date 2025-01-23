@@ -2,6 +2,10 @@
 
 package jp.co.gahojin.bytes
 
+import java.io.IOException
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
+import java.io.Serializable
 import java.nio.ByteBuffer
 import java.security.SecureRandom
 import java.util.*
@@ -11,8 +15,9 @@ import kotlin.text.HexFormat
 @Suppress("unused", "MemberVisibilityCanBePrivate")
 class Bytes private constructor(
     private val storage: ByteArray,
-) : Collection<Byte> {
-    override val size: Int = storage.size
+) : Collection<Byte>, Comparable<Bytes>, Cloneable, Serializable {
+    override val size: Int
+        get() = storage.size
 
     override fun isEmpty(): Boolean = storage.isEmpty()
 
@@ -25,6 +30,32 @@ class Bytes private constructor(
     fun contains(element: UByte): Boolean = contains(element.toByte())
 
     override fun contains(element: Byte): Boolean = storage.contains(element)
+
+    override fun compareTo(other: Bytes): Int {
+        val sizeA = size
+        val sizeB = other.size
+        val size = minOf(sizeA, sizeB)
+        var i = 0
+        while (i < size) {
+            val byteA = this[i] and 0xffu
+            val byteB = other[i] and 0xffu
+            return when {
+                byteA == byteB -> {
+                    i++
+                    continue
+                }
+                byteA < byteB -> -1
+                else -> 1
+            }
+        }
+        return when {
+            sizeA == sizeB -> 0
+            sizeA < sizeB -> -1
+            else -> 1
+        }
+    }
+
+    public override fun clone(): Bytes = copyOf()
 
     override fun hashCode(): Int = storage.contentHashCode()
 
@@ -40,6 +71,22 @@ class Bytes private constructor(
 
     fun contentEquals(other: Bytes): Boolean {
         return storage.contentEquals(other.storage)
+    }
+
+    @Throws(IOException::class)
+    private fun readObject(stream: ObjectInputStream) {
+        val size = stream.readInt()
+        val buf = ByteArray(size)
+        stream.readFully(buf)
+        val field = Bytes::class.java.getDeclaredField("storage")
+        field.isAccessible = true
+        field.set(this, buf)
+    }
+
+    @Throws(IOException::class)
+    private fun writeObject(out: ObjectOutputStream) {
+        out.writeInt(size)
+        out.write(storage)
     }
 
     operator fun get(offset: Int): UByte = storage[offset].toUByte()
@@ -354,6 +401,8 @@ class Bytes private constructor(
     fun toHexString(format: HexFormat = HexFormat.Default): String = storage.toHexString(format)
 
     companion object {
+        private const val serialVersionUID = 1L
+
         private val EMPTY: Bytes = Bytes(ByteArray(0))
 
         @JvmStatic
