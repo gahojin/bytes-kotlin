@@ -3,8 +3,10 @@ package jp.co.gahojin.bytes
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.property.Arb
-import io.kotest.property.arbitrary.*
-import io.kotest.property.arbitrary.uByteArray
+import io.kotest.property.arbitrary.byte
+import io.kotest.property.arbitrary.byteArray
+import io.kotest.property.arbitrary.int
+import io.kotest.property.arbitrary.uInt
 import io.kotest.property.checkAll
 
 class ByteArrayStoreTest : FunSpec({

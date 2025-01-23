@@ -9,6 +9,10 @@ import io.kotest.property.Arb
 import io.kotest.property.arbitrary.*
 import io.kotest.property.checkAll
 import org.junit.jupiter.api.assertThrows
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
+import java.io.ObjectInputStream
+import java.io.ObjectOutputStream
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.util.*
@@ -50,6 +54,70 @@ class BytesTest : FunSpec({
 
         sut.contains(0x02) shouldBe true
         sut.contains(0x04) shouldBe false
+    }
+
+    context("compareTo") {
+        test("同じ長さ") {
+            val sut1 = Bytes.from(0x01u, 0x02u, 0x03u)
+            sut1.compareTo(Bytes.from(0x01u, 0x01u, 0x04u)) shouldBe 1
+            sut1.compareTo(Bytes.from(0x01u, 0x02u, 0x03u)) shouldBe 0
+            sut1.compareTo(Bytes.from(0x01u, 0x02u, 0x04u)) shouldBe -1
+
+            // MSBが1の場合
+            val sut2 = Bytes.from(0x9au, 0x78u, 0x65u)
+            sut2.compareTo(Bytes.from(0x7au, 0x77u, 0x66u)) shouldBe 1
+            sut2.compareTo(Bytes.from(0x7au, 0x78u, 0x65u)) shouldBe 1
+            sut2.compareTo(Bytes.from(0x7au, 0x78u, 0x66u)) shouldBe 1
+        }
+
+        test("otherが長い") {
+            val sut1 = Bytes.from(0x01u, 0x02u, 0x03u)
+            sut1.compareTo(Bytes.from(0x01u, 0x01u, 0x04u, 0x00u)) shouldBe 1
+            sut1.compareTo(Bytes.from(0x01u, 0x02u, 0x03u, 0x00u)) shouldBe -1
+            sut1.compareTo(Bytes.from(0x01u, 0x02u, 0x04u, 0x00u)) shouldBe -1
+
+            // MSBが1の場合
+            val sut2 = Bytes.from(0x9au, 0x78u, 0x65u)
+            sut2.compareTo(Bytes.from(0x7au, 0x77u, 0x66u, 0x00u)) shouldBe 1
+            sut2.compareTo(Bytes.from(0x7au, 0x78u, 0x65u, 0x00u)) shouldBe 1
+            sut2.compareTo(Bytes.from(0x7au, 0x78u, 0x66u, 0x00u)) shouldBe 1
+        }
+
+        test("otherが短い") {
+            val sut1 = Bytes.from(0x01u, 0x02u, 0x03u)
+            sut1.compareTo(Bytes.from(0x01u, 0x01u)) shouldBe 1
+            sut1.compareTo(Bytes.from(0x01u, 0x02u)) shouldBe 1
+            sut1.compareTo(Bytes.from(0x01u, 0x03u)) shouldBe -1
+
+            // MSBが1の場合
+            val sut2 = Bytes.from(0x9au, 0x78u, 0x65u)
+            sut2.compareTo(Bytes.from(0x7au, 0x77u, 0x66u, 0x00u)) shouldBe 1
+            sut2.compareTo(Bytes.from(0x7au, 0x78u, 0x65u, 0x00u)) shouldBe 1
+            sut2.compareTo(Bytes.from(0x7au, 0x78u, 0x66u, 0x00u)) shouldBe 1
+        }
+    }
+
+    test("readObject/writeObject") {
+        checkAll(Arb.uByteArray(Arb.int(min = 0, max = 1024), Arb.uByte())) { a ->
+            val sut = Bytes.wrap(a)
+            val buf = ByteArrayOutputStream()
+            ObjectOutputStream(buf).use {
+                it.writeObject(sut)
+            }
+
+            val input = ObjectInputStream(ByteArrayInputStream(buf.toByteArray()))
+            val actual = input.readObject()
+            actual shouldBe sut
+        }
+    }
+
+    test("clone") {
+        val sut = Bytes.wrap("xyz".toByteArray())
+        val clone = sut.clone()
+        sut shouldBe clone
+
+        sut.put(0, "abc".toByteArray())
+        sut shouldNotBe clone
     }
 
     test("hashCode") {
