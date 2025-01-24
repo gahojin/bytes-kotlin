@@ -657,6 +657,17 @@ class BytesTest : FunSpec({
         }
     }
 
+    test("putInt(int, length)") {
+        checkAll(Arb.int(), Arb.int(2..4)) { a, len ->
+            val buf = ByteArray(10)
+            val sut = Bytes.wrap(buf)
+            val exp = ByteBuffer.allocate(10).putInt(1, a)
+
+            sut.putInt(1, a, len) shouldBe sut
+            sut.array().copyOfRange(1, len + 1) shouldBe exp.array().copyOfRange(5 - len, 5)
+        }
+    }
+
     test("putIntLe(int)") {
         checkAll(Arb.int()) { a ->
             val buf = ByteArray(10)
@@ -665,6 +676,17 @@ class BytesTest : FunSpec({
 
             sut.putIntLe(1, a) shouldBe sut
             sut.array() shouldBe exp.array()
+        }
+    }
+
+    test("putIntLe(int, length)") {
+        checkAll(Arb.int(), Arb.int(2..4)) { a, len ->
+            val buf = ByteArray(10)
+            val sut = Bytes.wrap(buf)
+            val exp = ByteBuffer.allocate(10).order(ByteOrder.LITTLE_ENDIAN).putInt(1, a)
+
+            sut.putIntLe(1, a, len) shouldBe sut
+            sut.array().copyOfRange(1, len + 1) shouldBe exp.array().copyOfRange(1, len + 1)
         }
     }
 
@@ -679,6 +701,17 @@ class BytesTest : FunSpec({
         }
     }
 
+    test("putInt(uint, length)") {
+        checkAll(Arb.uInt(), Arb.int(2..4)) { a, len ->
+            val buf = ByteArray(10)
+            val sut = Bytes.wrap(buf)
+            val exp = ByteBuffer.allocate(10).putInt(1, a.toInt())
+
+            sut.putInt(1, a, len) shouldBe sut
+            sut.array().copyOfRange(1, len + 1) shouldBe exp.array().copyOfRange(5 - len, 5)
+        }
+    }
+
     test("putIntLe(uint)") {
         checkAll(Arb.uInt()) { a ->
             val buf = ByteArray(10)
@@ -686,6 +719,61 @@ class BytesTest : FunSpec({
             val exp = ByteBuffer.allocate(10).order(ByteOrder.LITTLE_ENDIAN).putInt(1, a.toInt())
 
             sut.putIntLe(1, a) shouldBe sut
+            sut.array() shouldBe exp.array()
+        }
+    }
+
+    test("putIntLe(uint, length)") {
+        checkAll(Arb.uInt(), Arb.int(2..4)) { a, len ->
+            val buf = ByteArray(10)
+            val sut = Bytes.wrap(buf)
+            val exp = ByteBuffer.allocate(10).order(ByteOrder.LITTLE_ENDIAN).putInt(1, a.toInt())
+
+            sut.putIntLe(1, a, len) shouldBe sut
+            sut.array().copyOfRange(1, len + 1) shouldBe exp.array().copyOfRange(1, len + 1)
+        }
+    }
+
+    test("putInt24(int)") {
+        checkAll(Arb.int24()) { a ->
+            val buf = ByteArray(10)
+            val sut = Bytes.wrap(buf)
+            val exp = ByteBuffer.allocate(10).putInt(1, a)
+
+            sut.putInt24(1, a) shouldBe sut
+            sut.array().copyOfRange(1, 4) shouldBe exp.array().copyOfRange(2, 5)
+        }
+    }
+
+    test("putInt24Le(int)") {
+        checkAll(Arb.int24()) { a ->
+            val buf = ByteArray(10)
+            val sut = Bytes.wrap(buf)
+            val exp = ByteBuffer.allocate(10).order(ByteOrder.LITTLE_ENDIAN).putInt(1, a)
+
+            sut.putInt24Le(1, a) shouldBe sut
+            sut.array().copyOfRange(1, 4) shouldBe exp.array().copyOfRange(1, 4)
+        }
+    }
+
+    test("putInt24(uint)") {
+        checkAll(Arb.uInt24()) { a ->
+            val buf = ByteArray(10)
+            val sut = Bytes.wrap(buf)
+            val exp = ByteBuffer.allocate(10).putInt(1, a.toInt())
+
+            sut.putInt24(1, a) shouldBe sut
+            sut.array().copyOfRange(1, 4) shouldBe exp.array().copyOfRange(2, 5)
+        }
+    }
+
+    test("putInt24Le(uint)") {
+        checkAll(Arb.uInt24()) { a ->
+            val buf = ByteArray(10)
+            val sut = Bytes.wrap(buf)
+            val exp = ByteBuffer.allocate(10).order(ByteOrder.LITTLE_ENDIAN).putInt(1, a.toInt())
+
+            sut.putInt24Le(1, a) shouldBe sut
             sut.array() shouldBe exp.array()
         }
     }
@@ -701,6 +789,17 @@ class BytesTest : FunSpec({
         }
     }
 
+    test("putLong(long, length)") {
+        checkAll(Arb.long(), Arb.int(2..8)) { a, len ->
+            val buf = ByteArray(10)
+            val sut = Bytes.wrap(buf)
+            val exp = ByteBuffer.allocate(10).putLong(1, a)
+
+            sut.putLong(1, a, len) shouldBe sut
+            sut.array().copyOfRange(1, len + 1) shouldBe exp.array().copyOfRange(9 - len, 9)
+        }
+    }
+
     test("putLongLe(long)") {
         checkAll(Arb.long()) { a ->
             val buf = ByteArray(10)
@@ -709,6 +808,17 @@ class BytesTest : FunSpec({
 
             sut.putLongLe(1, a) shouldBe sut
             sut.array() shouldBe exp.array()
+        }
+    }
+
+    test("putLongLe(long, length)") {
+        checkAll(Arb.long(), Arb.int(2..8)) { a, len ->
+            val buf = ByteArray(10)
+            val sut = Bytes.wrap(buf)
+            val exp = ByteBuffer.allocate(10).order(ByteOrder.LITTLE_ENDIAN).putLong(1, a)
+
+            sut.putLongLe(1, a, len) shouldBe sut
+            sut.array().copyOfRange(1, len + 1) shouldBe exp.array().copyOfRange(1, len + 1)
         }
     }
 
@@ -723,6 +833,17 @@ class BytesTest : FunSpec({
         }
     }
 
+    test("putLong(ulong, length)") {
+        checkAll(Arb.uLong(), Arb.int(2..8)) { a, len ->
+            val buf = ByteArray(10)
+            val sut = Bytes.wrap(buf)
+            val exp = ByteBuffer.allocate(10).putLong(1, a.toLong())
+
+            sut.putLong(1, a, len) shouldBe sut
+            sut.array().copyOfRange(1, len + 1) shouldBe exp.array().copyOfRange(9 - len, 9)
+        }
+    }
+
     test("putLongLe(ulong)") {
         checkAll(Arb.uLong()) { a ->
             val buf = ByteArray(10)
@@ -731,6 +852,17 @@ class BytesTest : FunSpec({
 
             sut.putLongLe(1, a) shouldBe sut
             sut.array() shouldBe exp.array()
+        }
+    }
+
+    test("putLongLe(ulong, length)") {
+        checkAll(Arb.uLong(), Arb.int(2..8)) { a, len ->
+            val buf = ByteArray(10)
+            val sut = Bytes.wrap(buf)
+            val exp = ByteBuffer.allocate(10).order(ByteOrder.LITTLE_ENDIAN).putLong(1, a.toLong())
+
+            sut.putLongLe(1, a, len) shouldBe sut
+            sut.array().copyOfRange(1, len + 1) shouldBe exp.array().copyOfRange(1, len + 1)
         }
     }
 
