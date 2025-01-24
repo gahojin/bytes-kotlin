@@ -12,7 +12,7 @@ import java.util.*
 import kotlin.math.abs
 import kotlin.text.HexFormat
 
-@Suppress("unused", "MemberVisibilityCanBePrivate")
+@Suppress("MemberVisibilityCanBePrivate")
 class Bytes private constructor(
     private val storage: ByteArray,
 ) : Collection<Byte>, Comparable<Bytes>, Cloneable, Serializable {
