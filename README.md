@@ -4,6 +4,7 @@ Kotlin向けバイト配列操作ライブラリ
 
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/gahojin/bytes-kotlin/build.yml)](https://github.com/gahojin/bytes-kotlin/actions/workflows/build.yml)
 [![Maven Central Version](https://img.shields.io/maven-central/v/jp.co.gahojin.bytes-kotlin/bytes-kotlin)](https://central.sonatype.com/artifact/jp.co.gahojin.bytes-kotlin/bytes-kotlin)
+[![javadoc](https://javadoc.io/badge2/jp.co.gahojin.bytes-kotlin/bytes-kotlin/javadoc.svg)](https://javadoc.io/doc/jp.co.gahojin.bytes-kotlin/bytes-kotlin)
 [![GitHub License](https://img.shields.io/github/license/gahojin/bytes-kotlin)](LICENSE)
 
 ## Get Started
