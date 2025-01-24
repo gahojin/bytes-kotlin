@@ -2,7 +2,6 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
-    <ID>LargeClass:BytesTest.kt$BytesTest : FunSpec</ID>
     <ID>UnusedPrivateMember:Bytes.kt$Bytes$@Throws(IOException::class) private fun readObject(stream: ObjectInputStream)</ID>
     <ID>UnusedPrivateMember:Bytes.kt$Bytes$@Throws(IOException::class) private fun writeObject(out: ObjectOutputStream)</ID>
   </CurrentIssues>
