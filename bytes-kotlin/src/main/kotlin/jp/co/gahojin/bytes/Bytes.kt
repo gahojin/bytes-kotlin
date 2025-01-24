@@ -113,34 +113,17 @@ class Bytes private constructor(
 
     @JvmOverloads
     fun copyOf(newSize: Int, baseStrategy: ResizeStrategy = ResizeStrategy.ZERO_INDEX): Bytes {
-        return when (newSize) {
-            0 -> EMPTY
-            storage.size -> Bytes(storage.copyOf())
-            else -> when (baseStrategy) {
-                ResizeStrategy.ZERO_INDEX -> Bytes(storage.copyOf(newSize))
-                ResizeStrategy.MAX_LENGTH -> {
-                    val dest = ByteArray(newSize)
-                    val currentSize = storage.size
-                    val max = maxOf(0, abs(newSize - currentSize))
-                    if (newSize > currentSize) {
-                        System.arraycopy(storage, 0, dest, max, currentSize)
-                    } else {
-                        System.arraycopy(storage, max, dest, 0, newSize)
-                    }
-                    Bytes(dest)
-                }
-            }
-        }
+        return Bytes(storage.copyOf(newSize, baseStrategy))
     }
 
     @JvmOverloads
     fun copyInto(dest: ByteArray, offset: Int = 0, fromIndex: Int = 0, toIndex: Int = dest.size): Bytes {
-        System.arraycopy(storage, fromIndex, dest, offset, toIndex - fromIndex)
+        storage.copyInto(dest, offset, fromIndex, toIndex)
         return this
     }
 
     fun copyInto(dest: UByteArray, offset: Int = 0, fromIndex: Int = 0, toIndex: Int = dest.size): Bytes {
-        System.arraycopy(storage, fromIndex, dest.asByteArray(), offset, toIndex - fromIndex)
+        storage.copyInto(dest.asByteArray(), offset, fromIndex, toIndex)
         return this
     }
 
@@ -443,7 +426,7 @@ class Bytes private constructor(
     companion object {
         private const val serialVersionUID = 1L
 
-        private val EMPTY: Bytes = Bytes(ByteArray(0))
+        private val EMPTY: Bytes = Bytes(EMPTY_ARRAY)
 
         @JvmStatic
         @JvmOverloads
