@@ -61,7 +61,7 @@ class ToUByteArrayTest : FunSpec({
         }
 
         test("toUByteArray(length)") {
-            checkAll(Arb.int(Short.MIN_VALUE..Short.MAX_VALUE.toInt()), Arb.int(min = 2, max = 4)) { sut, len ->
+            checkAll(Arb.int(Short.MIN_VALUE..Short.MAX_VALUE.toInt()), Arb.int(2..4)) { sut, len ->
                 val buf = UByteArray(len)
                 sut.toUByteArray(buf, 0, len)
                 buf shouldBe sut.toUByteArray(len)
@@ -79,7 +79,7 @@ class ToUByteArrayTest : FunSpec({
         }
 
         test("toUByteArrayLe") {
-            checkAll(Arb.int(Short.MIN_VALUE..Short.MAX_VALUE.toInt()), Arb.int(min = 2, max = 4)) { sut, len ->
+            checkAll(Arb.int(Short.MIN_VALUE..Short.MAX_VALUE.toInt()), Arb.int(2..4)) { sut, len ->
                 val buf = UByteArray(len)
                 sut.toUByteArrayLe(buf, 0, len)
                 buf shouldBe sut.toUByteArrayLe(len)
@@ -99,7 +99,7 @@ class ToUByteArrayTest : FunSpec({
         }
 
         test("toUByteArrayLe(length)") {
-            checkAll(Arb.uInt(UShort.MIN_VALUE..UShort.MAX_VALUE), Arb.int(min = 2, max = 4)) { sut, len ->
+            checkAll(Arb.uInt(UShort.MIN_VALUE..UShort.MAX_VALUE), Arb.int(2..4)) { sut, len ->
                 val buf = UByteArray(len)
                 sut.toUByteArrayLe(buf, 0, len)
                 buf shouldBe sut.toUByteArrayLe(len)
@@ -117,7 +117,7 @@ class ToUByteArrayTest : FunSpec({
         }
 
         test("toUByteArrayLe(length)") {
-            checkAll(Arb.uInt(UShort.MIN_VALUE..UShort.MAX_VALUE), Arb.int(min = 2, max = 4)) { sut, len ->
+            checkAll(Arb.uInt(UShort.MIN_VALUE..UShort.MAX_VALUE), Arb.int(2..4)) { sut, len ->
                 val buf = UByteArray(len)
                 sut.toUByteArrayLe(buf, 0, len)
                 buf shouldBe sut.toUByteArrayLe(len)
@@ -137,7 +137,7 @@ class ToUByteArrayTest : FunSpec({
         }
 
         test("toUByteArray(length)") {
-            checkAll(Arb.long(Int.MIN_VALUE..Int.MAX_VALUE.toLong()), Arb.int(min = 4, max = 8)) { sut, len ->
+            checkAll(Arb.long(Int.MIN_VALUE..Int.MAX_VALUE.toLong()), Arb.int(4..8)) { sut, len ->
                 val buf = UByteArray(len)
                 sut.toUByteArray(buf, 0, len)
                 buf shouldBe sut.toUByteArray(len)
@@ -155,7 +155,7 @@ class ToUByteArrayTest : FunSpec({
         }
 
         test("toUByteArrayLe(length)") {
-            checkAll(Arb.long(Int.MIN_VALUE..Int.MAX_VALUE.toLong()), Arb.int(min = 4, max = 8)) { sut, len ->
+            checkAll(Arb.long(Int.MIN_VALUE..Int.MAX_VALUE.toLong()), Arb.int(4..8)) { sut, len ->
                 val buf = UByteArray(len)
                 sut.toUByteArrayLe(buf, 0, len)
                 buf shouldBe sut.toUByteArrayLe(len)
@@ -175,7 +175,7 @@ class ToUByteArrayTest : FunSpec({
         }
 
         test("toUByteArray(length)") {
-            checkAll(Arb.uLong(UInt.MIN_VALUE.toULong()..UInt.MAX_VALUE.toULong()), Arb.int(min = 4, max = 8)) { sut, len ->
+            checkAll(Arb.uLong(UInt.MIN_VALUE.toULong()..UInt.MAX_VALUE.toULong()), Arb.int(4..8)) { sut, len ->
                 val buf = UByteArray(len)
                 sut.toUByteArray(buf, 0, len)
                 buf shouldBe sut.toUByteArray(len)
@@ -193,7 +193,7 @@ class ToUByteArrayTest : FunSpec({
         }
 
         test("toUByteArrayLe(length)") {
-            checkAll(Arb.uLong(UInt.MIN_VALUE.toULong()..UInt.MAX_VALUE.toULong()), Arb.int(min = 4, max = 8)) { sut, len ->
+            checkAll(Arb.uLong(UInt.MIN_VALUE.toULong()..UInt.MAX_VALUE.toULong()), Arb.int(4..8)) { sut, len ->
                 val buf = UByteArray(len)
                 sut.toUByteArrayLe(buf, 0, len)
                 buf shouldBe sut.toUByteArrayLe(len)

@@ -124,11 +124,11 @@ fun ByteArray.switchBitLe(indexRange: IntProgression, value: Boolean, inPlace: B
 }
 
 fun ByteArray.flipBit(bitIndex: Int, inPlace: Boolean = false): ByteArray {
-    return switchBit(bitIndex.rangeTo(bitIndex), inPlace, ::getByteIndex) { bit, v -> v xor bit }
+    return switchBit(bitIndex..bitIndex, inPlace, ::getByteIndex) { bit, v -> v xor bit }
 }
 
 fun ByteArray.flipBitLe(bitIndex: Int, inPlace: Boolean = false): ByteArray {
-    return switchBit(bitIndex.rangeTo(bitIndex), inPlace, ::getByteIndexLe) { bit, v -> v xor bit }
+    return switchBit(bitIndex..bitIndex, inPlace, ::getByteIndexLe) { bit, v -> v xor bit }
 }
 
 fun ByteArray.flipBit(indexRange: IntProgression, inPlace: Boolean = false): ByteArray {
