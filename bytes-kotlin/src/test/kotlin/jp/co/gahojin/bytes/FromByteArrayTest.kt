@@ -14,7 +14,7 @@ class FromByteArrayTest : FunSpec({
             sut.getShort(0) shouldBe a
         }
 
-        checkAll(Arb.int(min = Short.MIN_VALUE.toInt(), max = Short.MAX_VALUE.toInt())) { a ->
+        checkAll(Arb.int(Short.MIN_VALUE..Short.MAX_VALUE)) { a ->
             val sut = ByteArray(2)
             sut.putShort(0, a)
             sut.getShort(0) shouldBe a.toShort()
@@ -28,7 +28,7 @@ class FromByteArrayTest : FunSpec({
             sut.getShortLe(0) shouldBe a
         }
 
-        checkAll(Arb.int(min = Short.MIN_VALUE.toInt(), max = Short.MAX_VALUE.toInt())) { a ->
+        checkAll(Arb.int(Short.MIN_VALUE..Short.MAX_VALUE)) { a ->
             val sut = ByteArray(2)
             sut.putShortLe(0, a)
             sut.getShortLe(0) shouldBe a.toShort()
@@ -42,7 +42,7 @@ class FromByteArrayTest : FunSpec({
             sut.getUShort(0) shouldBe a
         }
 
-        checkAll(Arb.uInt(min = UShort.MIN_VALUE.toUInt(), max = UShort.MAX_VALUE.toUInt())) { a ->
+        checkAll(Arb.uInt(UShort.MIN_VALUE..UShort.MAX_VALUE)) { a ->
             val sut = ByteArray(2)
             sut.putShort(0, a)
             sut.getUShort(0) shouldBe a.toUShort()
@@ -56,7 +56,7 @@ class FromByteArrayTest : FunSpec({
             sut.getUShortLe(0) shouldBe a
         }
 
-        checkAll(Arb.uInt(min = UShort.MIN_VALUE.toUInt(), max = UShort.MAX_VALUE.toUInt())) { a ->
+        checkAll(Arb.uInt(UShort.MIN_VALUE..UShort.MAX_VALUE)) { a ->
             val sut = ByteArray(2)
             sut.putShortLe(0, a)
             sut.getUShortLe(0) shouldBe a.toUShort()
@@ -80,7 +80,7 @@ class FromByteArrayTest : FunSpec({
     }
 
     test("getInt/putInt with length") {
-        checkAll(Arb.int(min = Short.MIN_VALUE.toInt(), max = Short.MAX_VALUE.toInt()), Arb.int(min = 2, max = 4)) { a, b ->
+        checkAll(Arb.int(Short.MIN_VALUE..Short.MAX_VALUE), Arb.int(2..4)) { a, b ->
             val sut = ByteArray(4)
             sut.putInt(0, a, b)
             sut.getInt(0, b) shouldBe a
@@ -88,7 +88,7 @@ class FromByteArrayTest : FunSpec({
     }
 
     test("getIntLe/putIntLe with length") {
-        checkAll(Arb.int(min = Short.MIN_VALUE.toInt(), max = Short.MAX_VALUE.toInt()), Arb.int(min = 2, max = 4)) { a, b ->
+        checkAll(Arb.int(Short.MIN_VALUE..Short.MAX_VALUE), Arb.int(2..4)) { a, b ->
             val sut = ByteArray(4)
             sut.putIntLe(0, a, b)
             sut.getIntLe(0, b) shouldBe a
@@ -112,7 +112,7 @@ class FromByteArrayTest : FunSpec({
     }
 
     test("getUInt/putInt with length") {
-        checkAll(Arb.uInt(min = UShort.MIN_VALUE.toUInt(), max = UShort.MAX_VALUE.toUInt()), Arb.int(min = 2, max = 4)) { a, b ->
+        checkAll(Arb.uInt(UShort.MIN_VALUE..UShort.MAX_VALUE), Arb.int(2..4)) { a, b ->
             val sut = ByteArray(4)
             sut.putInt(0, a, b)
             sut.getUInt(0, b) shouldBe a
@@ -120,7 +120,7 @@ class FromByteArrayTest : FunSpec({
     }
 
     test("getUIntLe/putIntLe with length") {
-        checkAll(Arb.uInt(min = UShort.MIN_VALUE.toUInt(), max = UShort.MAX_VALUE.toUInt()), Arb.int(min = 2, max = 4)) { a, b ->
+        checkAll(Arb.uInt(UShort.MIN_VALUE..UShort.MAX_VALUE), Arb.int(2..4)) { a, b ->
             val sut = ByteArray(4)
             sut.putIntLe(0, a, b)
             sut.getUIntLe(0, b) shouldBe a
@@ -176,7 +176,7 @@ class FromByteArrayTest : FunSpec({
     }
 
     test("getLong/putLong with length") {
-        checkAll(Arb.long(min = Int.MIN_VALUE.toLong(), max = Int.MAX_VALUE.toLong()), Arb.int(min = 4, max = 8)) { a, b ->
+        checkAll(Arb.long(Int.MIN_VALUE..Int.MAX_VALUE.toLong()), Arb.int(4..8)) { a, b ->
             val sut = ByteArray(8)
             sut.putLong(0, a, b)
             sut.getLong(0, b) shouldBe a
@@ -184,7 +184,7 @@ class FromByteArrayTest : FunSpec({
     }
 
     test("getLongLe/putLongLe with length") {
-        checkAll(Arb.long(min = Int.MIN_VALUE.toLong(), max = Int.MAX_VALUE.toLong()), Arb.int(min = 4, max = 8)) { a, b ->
+        checkAll(Arb.long(Int.MIN_VALUE..Int.MAX_VALUE.toLong()), Arb.int(4..8)) { a, b ->
             val sut = ByteArray(8)
             sut.putLongLe(0, a, b)
             sut.getLongLe(0, b) shouldBe a
@@ -208,7 +208,7 @@ class FromByteArrayTest : FunSpec({
     }
 
     test("getULong/putLong with length") {
-        checkAll(Arb.uLong(min = UInt.MIN_VALUE.toULong(), max = UInt.MAX_VALUE.toULong()), Arb.int(min = 4, max = 8)) { a, b ->
+        checkAll(Arb.uLong(UInt.MIN_VALUE.toULong()..UInt.MAX_VALUE.toULong()), Arb.int(4..8)) { a, b ->
             val sut = ByteArray(8)
             sut.putLong(0, a, b)
             sut.getULong(0, b) shouldBe a
@@ -216,7 +216,7 @@ class FromByteArrayTest : FunSpec({
     }
 
     test("getULongLe/putLongLe with length") {
-        checkAll(Arb.uLong(min = UInt.MIN_VALUE.toULong(), max = UInt.MAX_VALUE.toULong()), Arb.int(min = 4, max = 8)) { a, b ->
+        checkAll(Arb.uLong(UInt.MIN_VALUE.toULong()..UInt.MAX_VALUE.toULong()), Arb.int(4..8)) { a, b ->
             val sut = ByteArray(8)
             sut.putLongLe(0, a, b)
             sut.getULongLe(0, b) shouldBe a
@@ -224,7 +224,7 @@ class FromByteArrayTest : FunSpec({
     }
 
     test("put(Bytes)") {
-        checkAll(Arb.byteArray(Arb.int(min = 10, max = 256), Arb.byte())) { a ->
+        checkAll(Arb.byteArray(Arb.int(10..256), Arb.byte())) { a ->
             val sut = Bytes.wrap(a)
             val buf = ByteArray(a.size)
 

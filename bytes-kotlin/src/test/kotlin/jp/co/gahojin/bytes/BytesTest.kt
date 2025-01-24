@@ -21,7 +21,7 @@ import kotlin.random.nextUBytes
 
 class BytesTest : FunSpec({
     test("size") {
-        checkAll(Arb.int(min = 0, max = 1024)) { a ->
+        checkAll(Arb.int(0..1024)) { a ->
             Bytes.allocate(a).size shouldBe a
         }
     }
@@ -98,7 +98,7 @@ class BytesTest : FunSpec({
     }
 
     test("readObject/writeObject") {
-        checkAll(Arb.uByteArray(Arb.int(min = 0, max = 1024), Arb.uByte())) { a ->
+        checkAll(Arb.uByteArray(Arb.int(0..1024), Arb.uByte())) { a ->
             val sut = Bytes.wrap(a)
             val buf = ByteArrayOutputStream()
             ObjectOutputStream(buf).use {
@@ -121,14 +121,14 @@ class BytesTest : FunSpec({
     }
 
     test("hashCode") {
-        checkAll(Arb.uByteArray(Arb.int(min = 0, max = 1024), Arb.uByte())) { a ->
+        checkAll(Arb.uByteArray(Arb.int(0..1024), Arb.uByte())) { a ->
             val sut = Bytes.wrap(a)
             sut.hashCode() shouldBe a.contentHashCode()
         }
     }
 
     test("toString") {
-        checkAll(Arb.byteArray(Arb.int(min = 0, max = 1024), Arb.byte())) { a ->
+        checkAll(Arb.byteArray(Arb.int(0..1024), Arb.byte())) { a ->
             val sut = Bytes.wrap(a)
             sut.toString() shouldBe a.contentToString()
         }
@@ -136,7 +136,7 @@ class BytesTest : FunSpec({
 
     @Suppress("ReplaceCallWithBinaryOperator")
     test("equals") {
-        checkAll(Arb.uByteArray(Arb.int(min = 1, max = 256), Arb.uByte())) { a ->
+        checkAll(Arb.uByteArray(Arb.int(1..256), Arb.uByte())) { a ->
             val sut = Bytes.wrap(a)
             sut.equals(Bytes.from(a)) shouldBe true
             sut.equals(Bytes.from(a.inv())) shouldBe false
@@ -150,7 +150,7 @@ class BytesTest : FunSpec({
     }
 
     test("contentEquals") {
-        checkAll(Arb.uByteArray(Arb.int(min = 1, max = 256), Arb.uByte())) { a ->
+        checkAll(Arb.uByteArray(Arb.int(1..256), Arb.uByte())) { a ->
             val sut = Bytes.wrap(a)
             sut.contentEquals(Bytes.from(a)) shouldBe true
             sut.contentEquals(Bytes.from(a.inv())) shouldBe false
@@ -229,7 +229,7 @@ class BytesTest : FunSpec({
     }
 
     test("copyInto") {
-        checkAll(Arb.byteArray(Arb.int(min = 2, max = 256), Arb.byte())) { a ->
+        checkAll(Arb.byteArray(Arb.int(2..256), Arb.byte())) { a ->
             val buf = ByteArray(a.size + 2)
             val ubuf = UByteArray(a.size + 2)
             val sut = Bytes.wrap(a)
@@ -867,7 +867,7 @@ class BytesTest : FunSpec({
     }
 
     test("put(vararg byte)") {
-        checkAll(Arb.byteArray(Arb.int(min = 0, max = 10), Arb.byte())) { a ->
+        checkAll(Arb.byteArray(Arb.int(0..10), Arb.byte())) { a ->
             val b = a.copyOf(10)
             val sut = Bytes.allocate(10)
 
@@ -877,7 +877,7 @@ class BytesTest : FunSpec({
     }
 
     test("put(vararg ubyte)") {
-        checkAll(Arb.uByteArray(Arb.int(min = 0, max = 10), Arb.uByte())) { a ->
+        checkAll(Arb.uByteArray(Arb.int(0..10), Arb.uByte())) { a ->
             val b = a.copyOf(10)
             val sut = Bytes.allocate(10)
 
@@ -887,7 +887,7 @@ class BytesTest : FunSpec({
     }
 
     test("put(byteArray)") {
-        checkAll(Arb.byteArray(Arb.int(min = 0, max = 10), Arb.byte())) { a ->
+        checkAll(Arb.byteArray(Arb.int(0..10), Arb.byte())) { a ->
             val b = a.copyOf(10)
             val sut = Bytes.allocate(10)
 
@@ -897,7 +897,7 @@ class BytesTest : FunSpec({
     }
 
     test("put(uByteArray)") {
-        checkAll(Arb.uByteArray(Arb.int(min = 0, max = 10), Arb.uByte())) { a ->
+        checkAll(Arb.uByteArray(Arb.int(0..10), Arb.uByte())) { a ->
             val b = a.copyOf(10)
             val sut = Bytes.allocate(10)
 
@@ -987,7 +987,7 @@ class BytesTest : FunSpec({
     }
 
     test("reverse") {
-        checkAll(Arb.int(min = 2, max = 256)) { a ->
+        checkAll(Arb.int(2..256)) { a ->
             val arr = UByteArray(a) { it.toUByte() }
             val sut = Bytes.from(arr)
 
@@ -1047,7 +1047,7 @@ class BytesTest : FunSpec({
     }
 
     test("getBit") {
-        checkAll(Arb.int(min = 0, max = 31)) { a ->
+        checkAll(Arb.int(0..31)) { a ->
             val sut = Bytes.random(4)
             val exp = BitSet.valueOf(ByteBuffer.wrap(sut.array().reversedArray()))
             sut.getBit(a) shouldBe exp.get(a)
@@ -1055,7 +1055,7 @@ class BytesTest : FunSpec({
     }
 
     test("getBitLe") {
-        checkAll(Arb.int(min = 0, max = 31)) { a ->
+        checkAll(Arb.int(0..31)) { a ->
             val sut = Bytes.random(4)
             val exp = BitSet.valueOf(sut.array())
             sut.getBitLe(a) shouldBe exp.get(a)
@@ -1063,7 +1063,7 @@ class BytesTest : FunSpec({
     }
 
     test("switchBit") {
-        checkAll(Arb.int(min = 0, max = 31)) { a ->
+        checkAll(Arb.int(0..31)) { a ->
             val sut = Bytes.allocate(4)
             val exp = BitSet.valueOf(sut.array())
             exp.set(a, true)
@@ -1074,7 +1074,7 @@ class BytesTest : FunSpec({
     }
 
     test("switchBitLe") {
-        checkAll(Arb.int(min = 0, max = 31)) { a ->
+        checkAll(Arb.int(0..31)) { a ->
             val sut = Bytes.allocate(4)
             val exp = BitSet.valueOf(sut.array())
             exp.set(a, true)
@@ -1085,25 +1085,29 @@ class BytesTest : FunSpec({
     }
 
     test("flipBit") {
-        checkAll(Arb.int(min = 0, max = 31)) { a ->
+        checkAll(Arb.int(0..31)) { a ->
             val sut = Bytes.allocate(4)
             val exp = BitSet.valueOf(sut.array())
+            exp.flip(a)
+            sut.flipBit(a, inPlace = true).array() shouldBe exp.toByteArray().copyOf(4).reversedArray()
             exp.flip(a)
             sut.flipBit(a).array() shouldBe exp.toByteArray().copyOf(4).reversedArray()
         }
     }
 
     test("flipBitLe") {
-        checkAll(Arb.int(min = 0, max = 31)) { a ->
+        checkAll(Arb.int(0..31)) { a ->
             val sut = Bytes.allocate(4)
             val exp = BitSet.valueOf(sut.array())
+            exp.flip(a)
+            sut.flipBitLe(a, inPlace = true).array() shouldBe exp.toByteArray().copyOf(4)
             exp.flip(a)
             sut.flipBitLe(a).array() shouldBe exp.toByteArray().copyOf(4)
         }
     }
 
     test("toHexString") {
-        checkAll(Arb.uByteArray(Arb.int(min = 0, max = 1024), Arb.uByte())) { a ->
+        checkAll(Arb.uByteArray(Arb.int(0..1024), Arb.uByte())) { a ->
             val sut = Bytes.wrap(a)
             sut.toHexString() shouldBe a.toHexString()
         }
@@ -1111,14 +1115,14 @@ class BytesTest : FunSpec({
 
     context("companion object") {
         test("allocate") {
-            checkAll(Arb.int(min = 1, max = 1024)) { a ->
+            checkAll(Arb.int(1..1024)) { a ->
                 val sut = Bytes.allocate(a)
                 sut.size shouldBe a
                 sut.all { it == 0.toByte() } shouldBe true
             }
 
             // デフォルト値指定
-            checkAll(Arb.int(min = 0, max = 1024)) { a ->
+            checkAll(Arb.int(0..1024)) { a ->
                 val sut = Bytes.allocate(a, 0x12u)
                 sut.size shouldBe a
                 sut.all { it == 0x12.toByte() } shouldBe true
@@ -1206,7 +1210,7 @@ class BytesTest : FunSpec({
             // サイズ0の時
             Bytes.random(0).size shouldBe 0
 
-            checkAll(Arb.int(min = 10, max = 1024)) { a ->
+            checkAll(Arb.int(10..1024)) { a ->
                 val sut = Bytes.random(a)
                 sut.size shouldBe a
                 sut.all { it == 0.toByte() } shouldBe false
