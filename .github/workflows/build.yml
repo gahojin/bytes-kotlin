@@ -38,7 +38,7 @@ jobs:
 
     strategy:
       matrix:
-        java-version: [23]
+        java-version: [21]
 
     steps:
       - name: Checkout

@@ -46,6 +46,7 @@ java {
 kotlin {
     compilerOptions {
         optIn = listOf("kotlin.ExperimentalUnsignedTypes", "kotlin.ExperimentalStdlibApi")
+        javaParameters = true
         jvmTarget = JvmTarget.JVM_1_8
     }
 }
