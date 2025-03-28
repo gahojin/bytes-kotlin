@@ -1,5 +1,5 @@
 plugins {
-    id("de.fayard.refreshVersions") version "0.60.5"
+    id("jp.co.gahojin.refreshVersions") version "0.1.1"
 }
 
 dependencyResolutionManagement {
