@@ -16,8 +16,7 @@ updates:
         patterns:
           - "*"
     schedule:
-      interval: "weekly"
-      day: sunday
+      interval: "daily"
 
   - package-ecosystem: "gradle"
     directory: "/"
@@ -26,5 +25,4 @@ updates:
         patterns:
           - "*"
     schedule:
-      interval: "weekly"
-      day: sunday
+      interval: "daily"
