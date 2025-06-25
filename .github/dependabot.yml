@@ -25,7 +25,7 @@ updates:
         patterns:
           - "*"
     ignore:
-      # DokkaとJacksonの依存関係から、2.13.5よりバージョンを上げなし
-      - dependency-name: "com.fasterxml.jackson.core:jackson-databind"
+      # DokkaとJacksonの依存関係から、2.15.3よりバージョンを上げなし
+      - dependency-name: "com.fasterxml.jackson.core:jackson-*"
     schedule:
       interval: "daily"
