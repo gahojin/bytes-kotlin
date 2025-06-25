@@ -13,8 +13,13 @@ plugins {
 allprojects {
     configurations.all {
         resolutionStrategy {
-            force(libs.fastxml.jackson.core)
             force(libs.fastxml.woodstox)
+
+            eachDependency {
+                if (requested.group.startsWith("com.fasterxml.jackson")) {
+                    useVersion("2.15.3")
+                }
+            }
         }
     }
 }

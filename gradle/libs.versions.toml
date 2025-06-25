@@ -20,7 +20,7 @@ maven-publish = "0.33.0"
 
 [libraries]
 
-fastxml-jackson-core = { group = "com.fasterxml.jackson.core", name = "jackson-core", version.ref = "fastxml-jackson" }
+fastxml-jackson-bom = { group = "com.fasterxml.jackson", name = "jackson-bom", version.ref = "fastxml-jackson" }
 
 fastxml-woodstox = { group = "com.fasterxml.woodstox", name = "woodstox-core", version.ref = "fastxml-woodstox" }
 
