@@ -37,8 +37,8 @@ detekt {
 
 java {
     toolchain {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = Build.JvmTarget
+        targetCompatibility = Build.JvmTarget
     }
 }
 
@@ -46,12 +46,12 @@ kotlin {
     compilerOptions {
         optIn = listOf("kotlin.ExperimentalUnsignedTypes", "kotlin.ExperimentalStdlibApi")
         javaParameters = true
-        jvmTarget = JvmTarget.JVM_1_8
+        jvmTarget = JvmTarget.fromTarget(Build.JvmTarget.toString())
     }
 }
 
 tasks.withType<Detekt>().configureEach {
-    jvmTarget = "1.8"
+    jvmTarget = Build.JvmTarget.toString()
     reports {
         html.required = false
         xml.required = false
@@ -64,7 +64,7 @@ tasks.withType<Detekt>().configureEach {
 }
 
 tasks.withType<DetektCreateBaselineTask>().configureEach {
-    jvmTarget = "1.8"
+    jvmTarget = Build.JvmTarget.toString()
     exclude("build/")
     exclude("resources/")
 }
