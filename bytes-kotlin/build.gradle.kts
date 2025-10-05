@@ -79,6 +79,7 @@ tasks.withType<Test>().configureEach {
 }
 
 signing {
+    isRequired = true
     useGpgCmd()
     sign(publishing.publications)
 }
