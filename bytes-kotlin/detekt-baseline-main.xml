@@ -2,7 +2,7 @@
 <SmellBaseline>
   <ManuallySuppressedIssues/>
   <CurrentIssues>
-    <ID>UnusedPrivateMember:Bytes.kt$Bytes$@Throws(IOException::class) private fun readObject(stream: ObjectInputStream)</ID>
-    <ID>UnusedPrivateMember:Bytes.kt$Bytes$@Throws(IOException::class) private fun writeObject(out: ObjectOutputStream)</ID>
+    <ID>UnusedPrivateFunction:Bytes.kt:Bytes$@Throws(IOException::class) private fun readObject(stream: ObjectInputStream)</ID>
+    <ID>UnusedPrivateFunction:Bytes.kt:Bytes$@Throws(IOException::class) private fun writeObject(out: ObjectOutputStream)</ID>
   </CurrentIssues>
 </SmellBaseline>

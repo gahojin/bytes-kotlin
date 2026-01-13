@@ -2,7 +2,7 @@
 
 [versions]
 
-detekt = "1.23.8"
+detekt = "2.0.0-alpha.1"
 
 dokka = "2.1.0"
 
@@ -30,7 +30,7 @@ kotest-property = { group = "io.kotest", name = "kotest-property" }
 
 [plugins]
 
-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+detekt = { id = "dev.detekt", version.ref = "detekt" }
 
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 

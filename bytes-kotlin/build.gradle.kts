@@ -1,7 +1,7 @@
 import com.vanniktech.maven.publish.KotlinJvm
 import com.vanniktech.maven.publish.JavadocJar
-import io.gitlab.arturbosch.detekt.Detekt
-import io.gitlab.arturbosch.detekt.DetektCreateBaselineTask
+import dev.detekt.gradle.Detekt
+import dev.detekt.gradle.DetektCreateBaselineTask
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -51,22 +51,12 @@ kotlin {
 }
 
 tasks.withType<Detekt>().configureEach {
-    jvmTarget = Build.JvmTarget.toString()
     reports {
         html.required = false
-        xml.required = false
-        txt.required = false
+        checkstyle.required = false
         sarif.required = true
-        md.required = true
+        markdown.required = true
     }
-    exclude("build/")
-    exclude("resources/")
-}
-
-tasks.withType<DetektCreateBaselineTask>().configureEach {
-    jvmTarget = Build.JvmTarget.toString()
-    exclude("build/")
-    exclude("resources/")
 }
 
 tasks.withType<Test>().configureEach {
