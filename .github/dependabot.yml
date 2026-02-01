@@ -25,10 +25,6 @@ updates:
       all:
         patterns:
           - "*"
-    ignore:
-      # DokkaとJacksonの依存関係から、2.15.3よりバージョンを上げなし
-      - dependency-name: "com.fasterxml.jackson:jackson-*"
-      - dependency-name: "com.fasterxml.jackson.core:jackson-*"
     schedule:
       interval: "daily"
     cooldown:
