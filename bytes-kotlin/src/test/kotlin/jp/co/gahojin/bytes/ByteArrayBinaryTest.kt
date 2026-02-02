@@ -1,8 +1,8 @@
 package jp.co.gahojin.bytes
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.assertThrows
 
 class ByteArrayBinaryTest : FunSpec({
     test("inv") {
@@ -36,7 +36,7 @@ class ByteArrayBinaryTest : FunSpec({
         sut shouldBe byteArrayOf(0xf0.toByte(), 0x00, 0x85.toByte())
 
         // サイズ不一致
-        assertThrows<IllegalArgumentException> {
+        shouldThrow<IllegalArgumentException> {
             sut and ByteArray(1)
         }
     }
@@ -58,7 +58,7 @@ class ByteArrayBinaryTest : FunSpec({
         sut shouldBe byteArrayOf(0xff.toByte(), 0x0a.toByte(), 0xff.toByte())
 
         // サイズ不一致
-        assertThrows<IllegalArgumentException> {
+        shouldThrow<IllegalArgumentException> {
             sut or ByteArray(1)
         }
     }
@@ -80,7 +80,7 @@ class ByteArrayBinaryTest : FunSpec({
         sut shouldBe byteArrayOf(0xf0.toByte(), 0x0a, 0xf0.toByte())
 
         // サイズ不一致
-        assertThrows<IllegalArgumentException> {
+        shouldThrow<IllegalArgumentException> {
             sut xor ByteArray(1)
         }
     }

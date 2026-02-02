@@ -1,5 +1,6 @@
 package jp.co.gahojin.bytes
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -8,7 +9,6 @@ import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import io.kotest.property.Arb
 import io.kotest.property.arbitrary.*
 import io.kotest.property.checkAll
-import org.junit.jupiter.api.assertThrows
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
@@ -166,10 +166,10 @@ class BytesTest : FunSpec({
         sut[2] shouldBe 0x03u
 
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut[-1]
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut[3]
         }
     }
@@ -194,10 +194,10 @@ class BytesTest : FunSpec({
         sut.copyOfRange(2, 5) shouldBe Bytes.from(0x02u, 0x03u, 0x04u)
 
         // 範囲外
-        assertThrows<IndexOutOfBoundsException> {
+        shouldThrow<IndexOutOfBoundsException> {
             sut.copyOfRange(2, 11)
         }
-        assertThrows<IndexOutOfBoundsException> {
+        shouldThrow<IndexOutOfBoundsException> {
             sut.copyOfRange(-1, 4)
         }
     }
@@ -223,7 +223,7 @@ class BytesTest : FunSpec({
         sut.copyOf(20, ResizeStrategy.MAX_LENGTH) shouldBe Bytes.allocate(20) { maxOf(0, it - 10).toUByte() }
 
         // 範囲外
-        assertThrows<NegativeArraySizeException> {
+        shouldThrow<NegativeArraySizeException> {
             sut.copyOf(-1)
         }
     }
@@ -249,10 +249,10 @@ class BytesTest : FunSpec({
         sut.getByte(2) shouldBe 0xa5.toByte()
 
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getByte(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getByte(3)
         }
     }
@@ -264,10 +264,10 @@ class BytesTest : FunSpec({
         sut.getUByte(2) shouldBe 0xa5u
 
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getUByte(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getUByte(3)
         }
     }
@@ -282,10 +282,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(3)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getShort(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 2byte = over
             sut.getShort(2)
         }
@@ -301,10 +301,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(3)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getShortLe(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 2byte = over
             sut.getShortLe(2)
         }
@@ -320,10 +320,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(3)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getUShort(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 2byte = over
             sut.getUShort(2)
         }
@@ -339,10 +339,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(3)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getUShortLe(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 2byte = over
             sut.getUShortLe(2)
         }
@@ -358,10 +358,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(5)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getInt(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 4byte = over
             sut.getInt(2)
         }
@@ -377,10 +377,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(5)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getIntLe(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 4byte = over
             sut.getIntLe(2)
         }
@@ -396,10 +396,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(5)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getUInt(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 4byte = over
             sut.getUInt(2)
         }
@@ -415,10 +415,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(5)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getUIntLe(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 4byte = over
             sut.getUIntLe(2)
         }
@@ -434,10 +434,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(4)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getInt24(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 4byte = over
             sut.getInt24(2)
         }
@@ -453,10 +453,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(4)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getInt24Le(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 3byte = over
             sut.getInt24Le(2)
         }
@@ -472,10 +472,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(4)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getUInt24(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 3byte = over
             sut.getUInt24(2)
         }
@@ -491,10 +491,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(4)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getUInt24Le(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 3byte = over
             sut.getUInt24Le(2)
         }
@@ -510,10 +510,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(5)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getLong(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 4byte = over
             sut.getLong(2)
         }
@@ -529,10 +529,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(9)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getLongLe(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 8byte = over
             sut.getLongLe(2)
         }
@@ -548,10 +548,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(5)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getULong(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 4byte = over
             sut.getULong(2)
         }
@@ -567,10 +567,10 @@ class BytesTest : FunSpec({
 
         val sut = Bytes.allocate(9)
         // 範囲外
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             sut.getULongLe(-1)
         }
-        assertThrows<ArrayIndexOutOfBoundsException> {
+        shouldThrow<ArrayIndexOutOfBoundsException> {
             // 2 + 8byte = over
             sut.getULongLe(2)
         }
@@ -937,7 +937,7 @@ class BytesTest : FunSpec({
         sut shouldBe Bytes.from(0xf0u, 0x00u, 0x85u)
 
         // サイズ不一致
-        assertThrows<IllegalArgumentException> {
+        shouldThrow<IllegalArgumentException> {
             sut and Bytes.allocate(1)
         }
     }
@@ -959,7 +959,7 @@ class BytesTest : FunSpec({
         sut shouldBe Bytes.from(0xffu, 0x0au, 0xffu)
 
         // サイズ不一致
-        assertThrows<IllegalArgumentException> {
+        shouldThrow<IllegalArgumentException> {
             sut or Bytes.allocate(1)
         }
     }
@@ -981,7 +981,7 @@ class BytesTest : FunSpec({
         sut shouldBe Bytes.from(0xf0u, 0x0au, 0xf0u)
 
         // サイズ不一致
-        assertThrows<IllegalArgumentException> {
+        shouldThrow<IllegalArgumentException> {
             sut xor Bytes.allocate(1)
         }
     }
