@@ -1,8 +1,8 @@
 package jp.co.gahojin.bytes
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import org.junit.jupiter.api.assertThrows
 
 class ResizeTest : FunSpec({
     context("byteArray") {
@@ -30,7 +30,7 @@ class ResizeTest : FunSpec({
             sut.copyOf(20, ResizeStrategy.MAX_LENGTH) shouldBe ByteArray(20) { maxOf(0, it - 10).toByte() }
 
             // 範囲外
-            assertThrows<NegativeArraySizeException> {
+            shouldThrow<NegativeArraySizeException> {
                 sut.copyOf(-1)
             }
         }
@@ -61,7 +61,7 @@ class ResizeTest : FunSpec({
             sut.copyOf(20, ResizeStrategy.MAX_LENGTH) shouldBe UByteArray(20) { maxOf(0, it - 10).toUByte() }
 
             // 範囲外
-            assertThrows<NegativeArraySizeException> {
+            shouldThrow<NegativeArraySizeException> {
                 sut.copyOf(-1)
             }
         }
