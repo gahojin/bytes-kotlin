@@ -1,5 +1,6 @@
 import com.vanniktech.maven.publish.KotlinJvm
 import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.SourcesJar
 import dev.detekt.gradle.Detekt
 import dev.detekt.gradle.DetektCreateBaselineTask
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -77,7 +78,7 @@ signing {
 mavenPublishing {
     configure(KotlinJvm(
         javadocJar = JavadocJar.Dokka("dokkaGeneratePublicationJavadoc"),
-        sourcesJar = true,
+        sourcesJar = SourcesJar.Sources(),
     ))
 
     publishToMavenCentral()
