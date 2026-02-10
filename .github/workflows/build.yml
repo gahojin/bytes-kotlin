@@ -4,29 +4,19 @@ on:
   workflow_dispatch:
   push:
     branches: ['main']
-    paths-ignore:
-      - '.npmignore'
-      - '.husky/**'
-      - '.idea/**'
-      - '.vscode/**'
-      - 'doc/**'
-      - 'LICENSE'
-      - '*.md'
-      - 'bumpver.toml'
-      - 'package.json'
-      - 'pnpm-lock.yaml'
+    paths:
+      - 'bytes-kotlin/**'
+      - 'config/**'
+      - 'gradle/**'
+      - '*.gradle.kts'
+      - 'gradle.properties'
   pull_request:
-    paths-ignore:
-      - '.npmignore'
-      - '.husky/**'
-      - '.idea/**'
-      - '.vscode/**'
-      - 'doc/**'
-      - 'LICENSE'
-      - '*.md'
-      - 'bumpver.toml'
-      - 'package.json'
-      - 'pnpm-lock.yaml'
+    paths:
+      - 'bytes-kotlin/**'
+      - 'config/**'
+      - 'gradle/**'
+      - '*.gradle.kts'
+      - 'gradle.properties'
 
 permissions:
   contents: write
