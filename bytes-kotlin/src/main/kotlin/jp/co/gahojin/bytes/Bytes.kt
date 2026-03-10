@@ -1,3 +1,5 @@
+@file:Suppress("NOTHING_TO_INLINE")
+
 package jp.co.gahojin.bytes
 
 import java.io.IOException
@@ -34,8 +36,8 @@ class Bytes private constructor(
         val size = minOf(sizeA, sizeB)
         var i = 0
         while (i < size) {
-            val byteA = this[i] and 0xffu
-            val byteB = other[i] and 0xffu
+            val byteA = this[i]
+            val byteB = other[i]
             return when {
                 byteA == byteB -> {
                     i++
@@ -321,39 +323,39 @@ class Bytes private constructor(
     @JvmOverloads
     fun inv(inPlace: Boolean = false): Bytes = Bytes(storage.inv(inPlace))
 
-    infix fun and(second: Bytes): Bytes = and(second, false)
+    inline infix fun and(second: Bytes): Bytes = and(second, false)
 
     fun and(second: Bytes, inPlace: Boolean): Bytes = and(second.storage, inPlace)
 
-    infix fun and(second: ByteArray): Bytes = and(second, false)
+    inline infix fun and(second: ByteArray): Bytes = and(second, false)
 
     fun and(second: ByteArray, inPlace: Boolean): Bytes = Bytes(storage.and(second, inPlace))
 
-    infix fun and(second: UByteArray): Bytes = and(second, false)
+    inline infix fun and(second: UByteArray): Bytes = and(second, false)
 
     fun and(second: UByteArray, inPlace: Boolean): Bytes = Bytes(storage.and(second.asByteArray(), inPlace))
 
-    infix fun or(second: Bytes): Bytes = or(second, false)
+    inline infix fun or(second: Bytes): Bytes = or(second, false)
 
     fun or(second: Bytes, inPlace: Boolean): Bytes = or(second.storage, inPlace)
 
-    infix fun or(second: ByteArray): Bytes = or(second, false)
+    inline infix fun or(second: ByteArray): Bytes = or(second, false)
 
     fun or(second: ByteArray, inPlace: Boolean): Bytes = Bytes(storage.or(second, inPlace))
 
-    infix fun or(second: UByteArray): Bytes = or(second, false)
+    inline infix fun or(second: UByteArray): Bytes = or(second, false)
 
     fun or(second: UByteArray, inPlace: Boolean): Bytes = Bytes(storage.or(second.asByteArray(), inPlace))
 
-    infix fun xor(second: Bytes): Bytes = xor(second, false)
+    inline infix fun xor(second: Bytes): Bytes = xor(second, false)
 
     fun xor(second: Bytes, inPlace: Boolean): Bytes = xor(second.storage, inPlace)
 
-    infix fun xor(second: ByteArray): Bytes = xor(second, false)
+    inline infix fun xor(second: ByteArray): Bytes = xor(second, false)
 
     fun xor(second: ByteArray, inPlace: Boolean): Bytes = Bytes(storage.xor(second, inPlace))
 
-    infix fun xor(second: UByteArray): Bytes = xor(second, false)
+    inline infix fun xor(second: UByteArray): Bytes = xor(second, false)
 
     fun xor(second: UByteArray, inPlace: Boolean): Bytes = Bytes(storage.xor(second.asByteArray(), inPlace))
 
@@ -365,11 +367,11 @@ class Bytes private constructor(
         return Bytes(storage.reversedArray())
     }
 
-    infix fun shl(bitCount: Int): Bytes = shl(bitCount, false)
+    inline infix fun shl(bitCount: Int): Bytes = shl(bitCount, false)
 
     fun shl(bitCount: Int, inPlace: Boolean): Bytes = Bytes(storage.shl(bitCount, inPlace))
 
-    infix fun shr(bitCount: Int): Bytes = shr(bitCount, false)
+    inline infix fun shr(bitCount: Int): Bytes = shr(bitCount, false)
 
     fun shr(shiftBitCount: Int, inPlace: Boolean): Bytes = Bytes(storage.shr(shiftBitCount, inPlace))
 
@@ -378,12 +380,12 @@ class Bytes private constructor(
     fun getBitLe(bitIndex: Int): Boolean = storage.getBitLe(bitIndex)
 
     @JvmOverloads
-    fun switchBit(bitIndex: Int, value: Boolean, inPlace: Boolean = false): Bytes {
+    inline fun switchBit(bitIndex: Int, value: Boolean, inPlace: Boolean = false): Bytes {
         return switchBit(bitIndex.rangeTo(bitIndex), value, inPlace)
     }
 
     @JvmOverloads
-    fun switchBitLe(bitIndex: Int, value: Boolean, inPlace: Boolean = false): Bytes {
+    inline fun switchBitLe(bitIndex: Int, value: Boolean, inPlace: Boolean = false): Bytes {
         return switchBitLe(bitIndex.rangeTo(bitIndex), value, inPlace)
     }
 
@@ -421,6 +423,7 @@ class Bytes private constructor(
     fun toHexString(format: HexFormat = HexFormat.Default): String = storage.toHexString(format)
 
     companion object {
+        @Suppress("unused")
         private const val serialVersionUID = 1L
 
         private val EMPTY: Bytes = Bytes(EMPTY_ARRAY)

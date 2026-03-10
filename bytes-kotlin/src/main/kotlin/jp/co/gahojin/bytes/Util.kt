@@ -1,12 +1,18 @@
 package jp.co.gahojin.bytes
 
-infix fun Byte.shl(bitCount: Int): Int = toInt() and 0xff shl bitCount
+inline val Byte.uint: Int
+    get() = toInt() and 0xff
 
-infix fun Byte.shr(bitCount: Int): Int = toInt() and 0xff ushr bitCount
+inline val Byte.ulong: Long
+    get() = toLong() and 0xffL
 
-infix fun Byte.and(other: Int): Int = toInt() and other
+infix fun Byte.shl(bitCount: Int): Int = uint shl bitCount
 
-infix fun Byte.and(other: Long): Long = toLong() and other
+infix fun Byte.shr(bitCount: Int): Int = uint ushr bitCount
+
+infix fun Byte.and(other: Int): Int = uint and other
+
+infix fun Byte.and(other: Long): Long = ulong and other
 
 infix fun UByte.shl(bitCount: Int): UInt = toUInt() shl bitCount
 
