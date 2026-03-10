@@ -86,11 +86,11 @@ fun ByteArray.shr(bitCount: Int, inPlace: Boolean = false): ByteArray {
 }
 
 fun ByteArray.getBit(bitIndex: Int): Boolean {
-    return this[size - bitIndex / 8 - 1] shr (bitIndex % 8) and 0x01 != 0
+    return ((this[size - bitIndex / 8 - 1] shr (bitIndex % 8)) and 0x01) != 0
 }
 
 fun ByteArray.getBitLe(bitIndex: Int): Boolean {
-    return this[bitIndex / 8] shr (bitIndex % 8) and 0x01 != 0
+    return ((this[bitIndex / 8] shr (bitIndex % 8)) and 0x01) != 0
 }
 
 fun ByteArray.switchBit(bitIndex: Int, value: Boolean, inPlace: Boolean = false): ByteArray {
