@@ -4,9 +4,9 @@
 
 detekt = "2.0.0-alpha.2"
 
-dokka = "2.1.0"
+dokka = "2.2.0-Beta"
 
-kotest = "6.1.4"
+kotest = "6.1.5"
 
 kotlin = "2.3.10"
 
