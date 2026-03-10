@@ -1,5 +1,3 @@
-@file:Suppress("NOTHING_TO_INLINE")
-
 package jp.co.gahojin.bytes
 
 import kotlin.experimental.and
@@ -21,25 +19,25 @@ fun ByteArray.inv(inPlace: Boolean = false): ByteArray {
     return target
 }
 
-inline infix fun ByteArray.and(second: ByteArray): ByteArray = and(second, false)
+infix fun ByteArray.and(second: ByteArray): ByteArray = and(second, false)
 
 fun ByteArray.and(second: ByteArray, inPlace: Boolean = false): ByteArray {
     return bitWise(second, inPlace) { a, b -> a and b }
 }
 
-inline infix fun ByteArray.or(second: ByteArray): ByteArray = or(second, false)
+infix fun ByteArray.or(second: ByteArray): ByteArray = or(second, false)
 
 fun ByteArray.or(second: ByteArray, inPlace: Boolean = false): ByteArray {
     return bitWise(second, inPlace) { a, b -> a or b }
 }
 
-inline infix fun ByteArray.xor(second: ByteArray): ByteArray = xor(second, false)
+infix fun ByteArray.xor(second: ByteArray): ByteArray = xor(second, false)
 
 fun ByteArray.xor(second: ByteArray, inPlace: Boolean = false): ByteArray {
     return bitWise(second, inPlace) { a, b -> a xor b }
 }
 
-inline infix fun ByteArray.shl(bitCount: Int): ByteArray = shl(bitCount, false)
+infix fun ByteArray.shl(bitCount: Int): ByteArray = shl(bitCount, false)
 
 fun ByteArray.shl(bitCount: Int, inPlace: Boolean = false): ByteArray {
     val target = prepareTarget(inPlace)
@@ -64,7 +62,7 @@ fun ByteArray.shl(bitCount: Int, inPlace: Boolean = false): ByteArray {
     return target
 }
 
-inline infix fun ByteArray.shr(bitCount: Int): ByteArray = shr(bitCount, false)
+infix fun ByteArray.shr(bitCount: Int): ByteArray = shr(bitCount, false)
 
 fun ByteArray.shr(bitCount: Int, inPlace: Boolean = false): ByteArray {
     val target = prepareTarget(inPlace)
@@ -89,21 +87,21 @@ fun ByteArray.shr(bitCount: Int, inPlace: Boolean = false): ByteArray {
     return target
 }
 
-inline fun ByteArray.getBit(bitIndex: Int): Boolean {
+fun ByteArray.getBit(bitIndex: Int): Boolean {
     val byteIndex = size - bitIndex / 8 - 1
     return this[byteIndex] shr (bitIndex % 8) and 0x01 != 0
 }
 
-inline fun ByteArray.getBitLe(bitIndex: Int): Boolean {
+fun ByteArray.getBitLe(bitIndex: Int): Boolean {
     val byteIndex = bitIndex / 8
     return this[byteIndex] shr (bitIndex % 8) and 0x01 != 0
 }
 
-inline fun ByteArray.switchBit(bitIndex: Int, value: Boolean, inPlace: Boolean = false): ByteArray {
+fun ByteArray.switchBit(bitIndex: Int, value: Boolean, inPlace: Boolean = false): ByteArray {
     return switchBit(bitIndex.rangeTo(bitIndex), value, inPlace)
 }
 
-inline fun ByteArray.switchBitLe(bitIndex: Int, value: Boolean, inPlace: Boolean = false): ByteArray {
+fun ByteArray.switchBitLe(bitIndex: Int, value: Boolean, inPlace: Boolean = false): ByteArray {
     return switchBitLe(bitIndex.rangeTo(bitIndex), value, inPlace)
 }
 
@@ -168,15 +166,15 @@ private inline fun ByteArray.switchBit(
     return target
 }
 
-private inline fun ByteArray.prepareTarget(inPlace: Boolean): ByteArray {
+private fun ByteArray.prepareTarget(inPlace: Boolean): ByteArray {
     return if (inPlace) this else ByteArray(size)
 }
 
-private inline fun getByteIndex(size: Int, index: Int): Int {
+private fun getByteIndex(size: Int, index: Int): Int {
     return size - index / 8 - 1
 }
 
 @Suppress("UNUSED_PARAMETER")
-private inline fun getByteIndexLe( size: Int, index: Int): Int {
+private fun getByteIndexLe( size: Int, index: Int): Int {
     return index / 8
 }

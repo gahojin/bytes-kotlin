@@ -1,5 +1,3 @@
-@file:Suppress("NOTHING_TO_INLINE")
-
 package jp.co.gahojin.bytes
 
 import kotlin.math.abs
@@ -27,6 +25,6 @@ fun ByteArray.copyOf(newSize: Int, baseStrategy: ResizeStrategy): ByteArray {
     }
 }
 
-inline fun UByteArray.copyOf(newSize: Int, strategy: ResizeStrategy): UByteArray {
+fun UByteArray.copyOf(newSize: Int, strategy: ResizeStrategy): UByteArray {
     return asByteArray().copyOf(newSize, strategy).asUByteArray()
 }
