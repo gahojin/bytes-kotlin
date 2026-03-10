@@ -51,10 +51,9 @@ fun ByteArray.shl(bitCount: Int, inPlace: Boolean = false): ByteArray {
         if (sourceIndex >= size) {
             target[i] = 0
         } else {
-            val src = get(sourceIndex)
-            var dst = src shl shiftMod
+            var dst = get(sourceIndex).uint shl shiftMod
             if (sourceIndex < size - 1) {
-                dst = dst or (get(sourceIndex + 1) shr (8 - shiftMod) and carryMask)
+                dst = dst or ((get(sourceIndex + 1) shr (8 - shiftMod)) and carryMask)
             }
             target[i] = dst.toByte()
         }
@@ -76,10 +75,9 @@ fun ByteArray.shr(bitCount: Int, inPlace: Boolean = false): ByteArray {
         if (sourceIndex < 0) {
             target[i] = 0
         } else {
-            val src = get(sourceIndex)
-            var dst = src shr shiftMod
+            var dst = get(sourceIndex) shr shiftMod
             if (sourceIndex >= 1) {
-                dst = dst or (get(sourceIndex - 1) shl (8 - shiftMod) and carryMask)
+                dst = dst or ((get(sourceIndex - 1) shl (8 - shiftMod)) and carryMask)
             }
             target[i] = dst.toByte()
         }
@@ -88,13 +86,11 @@ fun ByteArray.shr(bitCount: Int, inPlace: Boolean = false): ByteArray {
 }
 
 fun ByteArray.getBit(bitIndex: Int): Boolean {
-    val byteIndex = size - bitIndex / 8 - 1
-    return this[byteIndex] shr (bitIndex % 8) and 0x01 != 0
+    return ((this[size - bitIndex / 8 - 1] shr (bitIndex % 8)) and 0x01) != 0
 }
 
 fun ByteArray.getBitLe(bitIndex: Int): Boolean {
-    val byteIndex = bitIndex / 8
-    return this[byteIndex] shr (bitIndex % 8) and 0x01 != 0
+    return ((this[bitIndex / 8] shr (bitIndex % 8)) and 0x01) != 0
 }
 
 fun ByteArray.switchBit(bitIndex: Int, value: Boolean, inPlace: Boolean = false): ByteArray {

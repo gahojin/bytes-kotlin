@@ -78,7 +78,7 @@ class ToUByteArrayTest : FunSpec({
             }
         }
 
-        test("toUByteArrayLe") {
+        test("toUByteArrayLe(length)") {
             checkAll(Arb.int(Short.MIN_VALUE..Short.MAX_VALUE.toInt()), Arb.int(2..4)) { sut, len ->
                 val buf = UByteArray(len)
                 sut.toUByteArrayLe(buf, 0, len)

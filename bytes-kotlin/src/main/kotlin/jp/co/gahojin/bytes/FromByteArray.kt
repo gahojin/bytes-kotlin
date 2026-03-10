@@ -1,12 +1,12 @@
 package jp.co.gahojin.bytes
 
 fun ByteArray.getShort(index: Int): Short {
-    val s = (this[index] shl 8) or (this[index + 1] and 0xff)
+    val s = (this[index] shl 8) or (this[index + 1].uint)
     return s.toShort()
 }
 
 fun ByteArray.getShortLe(index: Int): Short {
-    val s = (this[index] and 0xff) or (this[index + 1] shl 8)
+    val s = (this[index].uint) or (this[index + 1] shl 8)
     return s.toShort()
 }
 
@@ -18,11 +18,11 @@ fun ByteArray.getInt(index: Int): Int {
     return (this[index] shl 24) or
             (this[index + 1] shl 16) or
             (this[index + 2] shl 8) or
-            (this[index + 3] and 0xff)
+            (this[index + 3].uint)
 }
 
 fun ByteArray.getIntLe(index: Int): Int {
-    return (this[index] and 0xff) or
+    return (this[index].uint) or
             (this[index + 1] shl 8) or
             (this[index + 2] shl 16) or
             (this[index + 3] shl 24)
@@ -49,7 +49,7 @@ fun ByteArray.getUInt(index: Int, length: Int): UInt {
     for (shift in maxShift downTo 8 step 8) {
         tmp = tmp or (this[offset++] shl shift)
     }
-    tmp = tmp or (this[offset] and 0xff)
+    tmp = tmp or (this[offset].uint)
     return tmp.toUInt()
 }
 
@@ -58,7 +58,7 @@ fun ByteArray.getUIntLe(index: Int, length: Int): UInt {
 
     val maxShift = (length - 1) shl 3
     var offset = index
-    var tmp = this[offset] and 0xff
+    var tmp = this[offset].uint
     for (shift in 8 .. maxShift step 8) {
         tmp = tmp or (this[++offset] shl shift)
     }
@@ -76,37 +76,37 @@ fun ByteArray.getInt24Le(index: Int): Int {
 fun ByteArray.getUInt24(index: Int): UInt {
     val t = (this[index] shl 16) or
             (this[index + 1] shl 8) or
-            (this[index + 2] and 0xff)
+            (this[index + 2].uint)
     return t.toUInt()
 }
 
 fun ByteArray.getUInt24Le(index: Int): UInt {
-    val t = (this[index] and 0xff) or
+    val t = (this[index].uint) or
             (this[index + 1] shl 8) or
             (this[index + 2] shl 16)
     return t.toUInt()
 }
 
 fun ByteArray.getLong(index: Int): Long {
-    return (this[index] and 0xffL shl 56) or
-            (this[index + 1] and 0xffL shl 48) or
-            (this[index + 2] and 0xffL shl 40) or
-            (this[index + 3] and 0xffL shl 32) or
-            (this[index + 4] and 0xffL shl 24) or
-            (this[index + 5] and 0xffL shl 16) or
-            (this[index + 6] and 0xffL shl 8) or
-            (this[index + 7] and 0xffL)
+    return (this[index].ulong shl 56) or
+            (this[index + 1].ulong shl 48) or
+            (this[index + 2].ulong shl 40) or
+            (this[index + 3].ulong shl 32) or
+            (this[index + 4].ulong shl 24) or
+            (this[index + 5].ulong shl 16) or
+            (this[index + 6].ulong shl 8) or
+            (this[index + 7].ulong)
 }
 
 fun ByteArray.getLongLe(index: Int): Long {
-    return (this[index] and 0xffL) or
-            (this[index + 1] and 0xffL shl 8) or
-            (this[index + 2] and 0xffL shl 16) or
-            (this[index + 3] and 0xffL shl 24) or
-            (this[index + 4] and 0xffL shl 32) or
-            (this[index + 5] and 0xffL shl 40) or
-            (this[index + 6] and 0xffL shl 48) or
-            (this[index + 7] and 0xffL shl 56)
+    return (this[index].ulong) or
+            (this[index + 1].ulong shl 8) or
+            (this[index + 2].ulong shl 16) or
+            (this[index + 3].ulong shl 24) or
+            (this[index + 4].ulong shl 32) or
+            (this[index + 5].ulong shl 40) or
+            (this[index + 6].ulong shl 48) or
+            (this[index + 7].ulong shl 56)
 }
 
 fun ByteArray.getLong(index: Int, length: Int): Long {
@@ -118,9 +118,9 @@ fun ByteArray.getLongLe(index: Int, length: Int): Long {
 
     val maxShift = (length - 1) shl 3
     var offset = index
-    var tmp = this[offset] and 0xffL
+    var tmp = this[offset].ulong
     for (shift in 8 .. maxShift step 8) {
-        tmp = tmp or (this[++offset] and 0xffL shl shift)
+        tmp = tmp or (this[++offset].ulong shl shift)
     }
     return tmp.unsignedToSigned(length shl 3)
 }
@@ -136,9 +136,9 @@ fun ByteArray.getULong(index: Int, length: Int): ULong {
     var offset = index
     var tmp = 0L
     for (shift in maxShift downTo 8 step 8) {
-        tmp = tmp or (this[offset++] and 0xffL shl shift)
+        tmp = tmp or (this[offset++].ulong shl shift)
     }
-    return (tmp or (this[offset] and 0xffL)).toULong()
+    return (tmp or (this[offset].ulong)).toULong()
 }
 
 fun ByteArray.getULongLe(index: Int, length: Int): ULong {
@@ -146,9 +146,9 @@ fun ByteArray.getULongLe(index: Int, length: Int): ULong {
 
     val maxShift = (length - 1) shl 3
     var offset = index
-    var tmp = this[offset] and 0xffL
+    var tmp = this[offset].ulong
     for (shift in 8 .. maxShift step 8) {
-        tmp = tmp or (this[++offset] and 0xffL shl shift)
+        tmp = tmp or (this[++offset].ulong shl shift)
     }
     return tmp.toULong()
 }
