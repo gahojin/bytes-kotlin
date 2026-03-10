@@ -1,33 +1,31 @@
-@file:Suppress("NOTHING_TO_INLINE")
-
 package jp.co.gahojin.bytes
 
-inline infix fun Byte.shl(bitCount: Int): Int = toInt() and 0xff shl bitCount
+infix fun Byte.shl(bitCount: Int): Int = toInt() and 0xff shl bitCount
 
-inline infix fun Byte.shr(bitCount: Int): Int = toInt() and 0xff ushr bitCount
+infix fun Byte.shr(bitCount: Int): Int = toInt() and 0xff ushr bitCount
 
-inline infix fun Byte.and(other: Int): Int = toInt() and other
+infix fun Byte.and(other: Int): Int = toInt() and other
 
-inline infix fun Byte.and(other: Long): Long = toLong() and other
+infix fun Byte.and(other: Long): Long = toLong() and other
 
-inline infix fun UByte.shl(bitCount: Int): UInt = toUInt() shl bitCount
+infix fun UByte.shl(bitCount: Int): UInt = toUInt() shl bitCount
 
-inline infix fun UByte.shr(bitCount: Int): UInt = toUInt() shr bitCount
+infix fun UByte.shr(bitCount: Int): UInt = toUInt() shr bitCount
 
-inline infix fun UByte.and(other: UInt): UInt = toUInt() and other
+infix fun UByte.and(other: UInt): UInt = toUInt() and other
 
-inline infix fun UByte.and(other: ULong): ULong = toULong() and other
+infix fun UByte.and(other: ULong): ULong = toULong() and other
 
-inline fun Int.unsignedToSigned(size: Int): Int {
+fun Int.unsignedToSigned(size: Int): Int {
     val t = 1 shl (size - 1)
     return takeIf { this and t == 0 } ?: (-1 * (t - (this and t - 1)))
 }
 
-inline fun UInt.unsignedToSigned(size: Int): Int = toInt().unsignedToSigned(size)
+fun UInt.unsignedToSigned(size: Int): Int = toInt().unsignedToSigned(size)
 
-inline fun Long.unsignedToSigned(size: Int): Long {
+fun Long.unsignedToSigned(size: Int): Long {
     val t = 1L shl (size - 1)
     return takeIf { this and t == 0L } ?: (-1 * (t - (this and t - 1L)))
 }
 
-inline fun ULong.unsignedToSigned(size: Int): Long = toLong().unsignedToSigned(size)
+fun ULong.unsignedToSigned(size: Int): Long = toLong().unsignedToSigned(size)
