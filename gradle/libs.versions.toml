@@ -8,7 +8,7 @@ dokka = "2.2.0-Beta"
 
 kotest = "6.1.7"
 
-kotlin = "2.3.10"
+kotlin = "2.3.20"
 
 kover = "0.9.7"
 
