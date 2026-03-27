@@ -4,7 +4,7 @@
 
 detekt = "2.0.0-alpha.2"
 
-dokka = "2.2.0-Beta"
+dokka = "2.2.0"
 
 kotest = "6.1.9"
 
