@@ -69,12 +69,6 @@ tasks.withType<Test>().configureEach {
     }
 }
 
-signing {
-    isRequired = true
-    useGpgCmd()
-    sign(publishing.publications)
-}
-
 mavenPublishing {
     configure(KotlinJvm(
         javadocJar = JavadocJar.Dokka("dokkaGeneratePublicationJavadoc"),
@@ -82,6 +76,7 @@ mavenPublishing {
     ))
 
     publishToMavenCentral()
+    signAllPublications()
 
     coordinates(Maven.GROUP_ID, Maven.ARTIFACT_ID, Maven.VERSION)
 
