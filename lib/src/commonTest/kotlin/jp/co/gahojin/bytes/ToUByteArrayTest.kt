@@ -9,6 +9,7 @@ import io.kotest.property.arbitrary.uInt
 import io.kotest.property.arbitrary.uLong
 import io.kotest.property.checkAll
 
+@OptIn(ExperimentalUnsignedTypes::class)
 class ToUByteArrayTest : FunSpec({
     context("short") {
         test("toUByteArray") {

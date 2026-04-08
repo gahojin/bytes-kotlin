@@ -4,6 +4,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 
+@OptIn(ExperimentalUnsignedTypes::class)
 class UByteArrayBinaryTest : FunSpec({
     test("inv") {
         // 反転していること

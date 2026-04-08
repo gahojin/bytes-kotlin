@@ -62,6 +62,17 @@ kotlin {
             }
         }
     }
+
+    targets.all {
+        compilations.all {
+            compileTaskProvider.configure {
+                compilerOptions {
+                    optIn.add("kotlin.ExperimentalUnsignedTypes")
+                    freeCompilerArgs.add("-Xexpect-actual-classes")
+                }
+            }
+        }
+    }
 }
 
 detekt {

@@ -4,6 +4,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 
+@OptIn(ExperimentalUnsignedTypes::class)
 class ResizeTest : FunSpec({
     context("byteArray") {
         test("copyOf") {
@@ -30,8 +31,8 @@ class ResizeTest : FunSpec({
             sut.copyOf(20, ResizeStrategy.MAX_LENGTH) shouldBe ByteArray(20) { maxOf(0, it - 10).toByte() }
 
             // 範囲外
-            shouldThrow<NegativeArraySizeException> {
-                sut.copyOf(-1)
+            shouldThrow<IllegalArgumentException> {
+                sut.copyOf(-1, ResizeStrategy.MAX_LENGTH)
             }
         }
     }
@@ -61,8 +62,8 @@ class ResizeTest : FunSpec({
             sut.copyOf(20, ResizeStrategy.MAX_LENGTH) shouldBe UByteArray(20) { maxOf(0, it - 10).toUByte() }
 
             // 範囲外
-            shouldThrow<NegativeArraySizeException> {
-                sut.copyOf(-1)
+            shouldThrow<IllegalArgumentException> {
+                sut.copyOf(-1, ResizeStrategy.ZERO_INDEX)
             }
         }
     }

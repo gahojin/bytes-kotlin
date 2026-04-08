@@ -1,5 +1,7 @@
 package jp.co.gahojin.bytes
 
+import kotlin.jvm.JvmOverloads
+
 fun Short.toByteArray(): ByteArray = ByteArray(2).also { it.putShort(0, this) }
 
 fun Short.toByteArrayLe(): ByteArray = ByteArray(2).also { it.putShortLe(0, this) }

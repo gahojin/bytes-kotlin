@@ -5,6 +5,8 @@ import kotlin.math.abs
 internal val EMPTY_ARRAY = ByteArray(0)
 
 fun ByteArray.copyOf(newSize: Int, baseStrategy: ResizeStrategy): ByteArray {
+    require(newSize >= 0)
+
     return when (newSize) {
         0 -> EMPTY_ARRAY
         size -> copyOf()
@@ -12,12 +14,12 @@ fun ByteArray.copyOf(newSize: Int, baseStrategy: ResizeStrategy): ByteArray {
             ResizeStrategy.ZERO_INDEX -> copyOf(newSize)
             ResizeStrategy.MAX_LENGTH -> {
                 val currentSize = size
-                val max = maxOf(0, abs(newSize - currentSize))
+                val max = abs(newSize - currentSize)
                 ByteArray(newSize).also {
                     if (newSize > currentSize) {
-                        System.arraycopy(this, 0, it, max, currentSize)
+                        copyInto(it, max, 0, currentSize)
                     } else {
-                        System.arraycopy(this, max, it, 0, newSize)
+                        copyInto(it, 0, max, max + newSize)
                     }
                 }
             }

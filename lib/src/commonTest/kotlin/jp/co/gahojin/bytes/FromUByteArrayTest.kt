@@ -6,6 +6,7 @@ import io.kotest.property.Arb
 import io.kotest.property.arbitrary.*
 import io.kotest.property.checkAll
 
+@OptIn(ExperimentalUnsignedTypes::class)
 class FromUByteArrayTest : FunSpec({
     test("getShort") {
         checkAll<Short> { a ->
