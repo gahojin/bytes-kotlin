@@ -17,7 +17,7 @@ plugins {
 }
 
 group = "jp.co.gahojin.bytes-kotlin"
-version = "1.7.0"
+version = "2026.4.0"
 
 kotlin {
     jvm()
