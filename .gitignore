@@ -133,7 +133,12 @@ $RECYCLE.BIN/
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
+# Other
+.idea/caches
+.idea/inspectionProfiles
+
 # Gradle
+!gradle/wrapper/gradle-wrapper.jar
 .idea/**/gradle.xml
 .idea/**/libraries
 
@@ -186,9 +191,18 @@ fabric.properties
 # node.js
 node_modules/
 
-# Kotlin
-.kotlin/
-
 # Lefthook
 lefthook-local.*
 
+# Kotlin
+.kotlin/
+captures/
+.externalNativeBuild/
+.cxx/
+xcuserdata
+
+# Android
+local.properties
+
+# GPG
+*.gpg
