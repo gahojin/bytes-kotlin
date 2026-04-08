@@ -1,7 +1,5 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package jp.co.gahojin.bytes
-
 import java.io.IOException
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream

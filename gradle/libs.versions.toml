@@ -2,13 +2,19 @@
 
 [versions]
 
+android-gradle-plugin = "9.1.0"
+
 detekt = "2.0.0-alpha.2"
 
 dokka = "2.2.0"
 
+google-devtools-ksp = "2.3.6"
+
 kotest = "6.1.11"
 
 kotlin = "2.3.20"
+
+kotlin-serialization = "1.10.0"
 
 kover = "0.9.8"
 
@@ -16,27 +22,31 @@ maven-publish = "0.36.0"
 
 [libraries]
 
-kotlin-bom = { group = "org.jetbrains.kotlin", name = "kotlin-bom", version.ref = "kotlin" }
+kotest-framework-engine = { group = "io.kotest", name = "kotest-framework-engine", version.ref = "kotest" }
 
-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
+kotest-runner-junit5 = { group = "io.kotest", name = "kotest-runner-junit5", version.ref = "kotest" }
 
-kotest-bom = { group = "io.kotest", name = "kotest-bom", version.ref = "kotest" }
+kotest-assertions-core = { group = "io.kotest", name = "kotest-assertions-core", version.ref = "kotest" }
 
-kotest-runner-junit5 = { group = "io.kotest", name = "kotest-runner-junit5" }
+kotest-property = { group = "io.kotest", name = "kotest-property", version.ref = "kotest" }
 
-kotest-assertions-core = { group = "io.kotest", name = "kotest-assertions-core" }
-
-kotest-property = { group = "io.kotest", name = "kotest-property" }
+kotlinx-serialization-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-core", version.ref = "kotlin-serialization" }
 
 [plugins]
+
+android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "android-gradle-plugin" }
 
 detekt = { id = "dev.detekt", version.ref = "detekt" }
 
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 
-dokka-javadoc = { id = "org.jetbrains.dokka-javadoc", version.ref = "dokka" }
+google-devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "google-devtools-ksp" }
 
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotest = { id = "io.kotest", version.ref = "kotest" }
+
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+
+kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 
