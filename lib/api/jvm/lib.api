@@ -1,0 +1,587 @@
+public abstract class jp/co/gahojin/bytes/BaseBytes : java/lang/Comparable, java/util/Collection, kotlin/jvm/internal/markers/KMappedMarker {
+	public fun add (B)Z
+	public synthetic fun add (Ljava/lang/Object;)Z
+	public fun addAll (Ljava/util/Collection;)Z
+	public final fun and (Ljp/co/gahojin/bytes/BaseBytes;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun and (Ljp/co/gahojin/bytes/BaseBytes;Z)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun and ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun and ([BZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun and-GBYM_sE ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun and-rto03Yo ([BZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun array ()[B
+	public fun clear ()V
+	public synthetic fun compareTo (Ljava/lang/Object;)I
+	public fun compareTo (Ljp/co/gahojin/bytes/BaseBytes;)I
+	public fun contains (B)Z
+	public final fun contains (Ljava/lang/Object;)Z
+	public final fun contains-7apg3OU (B)Z
+	public fun containsAll (Ljava/util/Collection;)Z
+	public final fun contentEquals (Ljp/co/gahojin/bytes/BaseBytes;)Z
+	public final fun copyInto ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun copyInto ([BI)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun copyInto ([BII)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun copyInto ([BIII)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun copyInto$default (Ljp/co/gahojin/bytes/BaseBytes;[BIIIILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun copyInto-UCuZD-g ([BIII)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun copyInto-UCuZD-g$default (Ljp/co/gahojin/bytes/BaseBytes;[BIIIILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun copyOf ()Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun copyOf (I)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun copyOf (ILjp/co/gahojin/bytes/ResizeStrategy;)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun copyOf$default (Ljp/co/gahojin/bytes/BaseBytes;ILjp/co/gahojin/bytes/ResizeStrategy;ILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun copyOfRange (II)Ljp/co/gahojin/bytes/BaseBytes;
+	protected abstract fun create ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun flipBit (I)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun flipBit (IZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun flipBit (Lkotlin/ranges/IntProgression;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun flipBit (Lkotlin/ranges/IntProgression;Z)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun flipBit$default (Ljp/co/gahojin/bytes/BaseBytes;IZILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun flipBit$default (Ljp/co/gahojin/bytes/BaseBytes;Lkotlin/ranges/IntProgression;ZILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun flipBitLe (I)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun flipBitLe (IZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun flipBitLe (Lkotlin/ranges/IntProgression;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun flipBitLe (Lkotlin/ranges/IntProgression;Z)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun flipBitLe$default (Ljp/co/gahojin/bytes/BaseBytes;IZILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun flipBitLe$default (Ljp/co/gahojin/bytes/BaseBytes;Lkotlin/ranges/IntProgression;ZILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun get-Wa3L5BU (I)B
+	public final fun getBit (I)Z
+	public final fun getBitLe (I)Z
+	public final fun getByte (I)B
+	public final fun getInt (I)I
+	public final fun getInt24 (I)I
+	public final fun getInt24Le (I)I
+	public final fun getIntLe (I)I
+	public final fun getLong (I)J
+	public final fun getLongLe (I)J
+	protected abstract fun getSelf ()Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun getShort (I)S
+	public final fun getShortLe (I)S
+	public fun getSize ()I
+	protected final fun getStorage ()[B
+	public final fun getUByte-Wa3L5BU (I)B
+	public final fun getUInt-OGnWXxg (I)I
+	public final fun getUInt24-OGnWXxg (I)I
+	public final fun getUInt24Le-OGnWXxg (I)I
+	public final fun getUIntLe-OGnWXxg (I)I
+	public final fun getULong-I7RO_PI (I)J
+	public final fun getULongLe-I7RO_PI (I)J
+	public final fun getUShort-BwKQO78 (I)S
+	public final fun getUShortLe-BwKQO78 (I)S
+	public fun hashCode ()I
+	public final fun inv ()Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun inv (Z)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun inv$default (Ljp/co/gahojin/bytes/BaseBytes;ZILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public fun isEmpty ()Z
+	public fun iterator ()Ljava/util/Iterator;
+	public final fun or (Ljp/co/gahojin/bytes/BaseBytes;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun or (Ljp/co/gahojin/bytes/BaseBytes;Z)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun or ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun or ([BZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun or-GBYM_sE ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun or-rto03Yo ([BZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun put (IB)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun put (IB[B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun put (ILjp/co/gahojin/bytes/BaseBytes;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun put (ILjp/co/gahojin/bytes/BaseBytes;I)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun put (ILjp/co/gahojin/bytes/BaseBytes;II)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun put (I[B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun put (I[BI)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun put (I[BII)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun put$default (Ljp/co/gahojin/bytes/BaseBytes;ILjp/co/gahojin/bytes/BaseBytes;IIILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun put$default (Ljp/co/gahojin/bytes/BaseBytes;I[BIIILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun put-EK-6454 (IB)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun put-hr4KVGQ (IB[B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun put-o1GoV1E (I[BII)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun put-o1GoV1E$default (Ljp/co/gahojin/bytes/BaseBytes;I[BIIILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putInt (II)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putInt (III)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putInt-OsBMiQA (III)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putInt-Qn1smSk (II)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putInt24 (II)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putInt24-Qn1smSk (II)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putInt24Le (II)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putInt24Le-Qn1smSk (II)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putIntLe (II)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putIntLe (III)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putIntLe-OsBMiQA (III)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putIntLe-Qn1smSk (II)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putLong (IJ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putLong (IJI)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putLong-2TYgG_w (IJ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putLong-z13BHRw (IJI)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putLongLe (IJ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putLongLe (IJI)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putLongLe-2TYgG_w (IJ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putLongLe-z13BHRw (IJI)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putShort (IS)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putShort-i8woANY (IS)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putShortLe (IS)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun putShortLe-i8woANY (IS)Ljp/co/gahojin/bytes/BaseBytes;
+	public fun remove (Ljava/lang/Object;)Z
+	public fun removeAll (Ljava/util/Collection;)Z
+	public fun removeIf (Ljava/util/function/Predicate;)Z
+	public fun retainAll (Ljava/util/Collection;)Z
+	public final fun reverse (Z)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun reverse$default (Ljp/co/gahojin/bytes/BaseBytes;ZILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun set (IB)V
+	public final fun set-EK-6454 (IB)V
+	public final fun shl (I)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun shl (IZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun shr (I)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun shr (IZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun size ()I
+	public final fun switchBit (IZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun switchBit (IZZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun switchBit (Lkotlin/ranges/IntProgression;Z)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun switchBit (Lkotlin/ranges/IntProgression;ZZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun switchBit$default (Ljp/co/gahojin/bytes/BaseBytes;IZZILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun switchBit$default (Ljp/co/gahojin/bytes/BaseBytes;Lkotlin/ranges/IntProgression;ZZILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun switchBitLe (IZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun switchBitLe (IZZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun switchBitLe (Lkotlin/ranges/IntProgression;Z)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun switchBitLe (Lkotlin/ranges/IntProgression;ZZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun switchBitLe$default (Ljp/co/gahojin/bytes/BaseBytes;IZZILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun switchBitLe$default (Ljp/co/gahojin/bytes/BaseBytes;Lkotlin/ranges/IntProgression;ZZILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public fun toArray ()[Ljava/lang/Object;
+	public fun toArray ([Ljava/lang/Object;)[Ljava/lang/Object;
+	public final fun toHexString ()Ljava/lang/String;
+	public final fun toHexString (Lkotlin/text/HexFormat;)Ljava/lang/String;
+	public static synthetic fun toHexString$default (Ljp/co/gahojin/bytes/BaseBytes;Lkotlin/text/HexFormat;ILjava/lang/Object;)Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+	public final fun uarray-TcUX1vc ()[B
+	public final fun xor (Ljp/co/gahojin/bytes/BaseBytes;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun xor (Ljp/co/gahojin/bytes/BaseBytes;Z)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun xor ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun xor ([BZ)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun xor-GBYM_sE ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun xor-rto03Yo ([BZ)Ljp/co/gahojin/bytes/BaseBytes;
+}
+
+public abstract class jp/co/gahojin/bytes/BaseBytesCompanion {
+	public fun <init> ()V
+	public final fun commonAllocate (IB)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun commonAllocate (ILkotlin/jvm/functions/Function1;)Ljp/co/gahojin/bytes/BaseBytes;
+	public static synthetic fun commonAllocate$default (Ljp/co/gahojin/bytes/BaseBytesCompanion;IBILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun commonAllocate-EK-6454 (IB)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun commonEmpty ()Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun commonFrom ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun commonFrom ([BII)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun commonFrom ([Ljp/co/gahojin/bytes/BaseBytes;)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun commonFrom-GBYM_sE ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun commonFrom-mbSTycY ([BII)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun commonWrap ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun commonWrap-GBYM_sE ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	protected abstract fun create ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	protected abstract fun getEmpty ()Ljp/co/gahojin/bytes/BaseBytes;
+}
+
+public final class jp/co/gahojin/bytes/ByteArrayBinaryKt {
+	public static final fun and ([B[B)[B
+	public static final fun and ([B[BZ)[B
+	public static synthetic fun and$default ([B[BZILjava/lang/Object;)[B
+	public static final fun flipBit ([BIZ)[B
+	public static final fun flipBit ([BLkotlin/ranges/IntProgression;Z)[B
+	public static synthetic fun flipBit$default ([BIZILjava/lang/Object;)[B
+	public static synthetic fun flipBit$default ([BLkotlin/ranges/IntProgression;ZILjava/lang/Object;)[B
+	public static final fun flipBitLe ([BIZ)[B
+	public static final fun flipBitLe ([BLkotlin/ranges/IntProgression;Z)[B
+	public static synthetic fun flipBitLe$default ([BIZILjava/lang/Object;)[B
+	public static synthetic fun flipBitLe$default ([BLkotlin/ranges/IntProgression;ZILjava/lang/Object;)[B
+	public static final fun getBit ([BI)Z
+	public static final fun getBitLe ([BI)Z
+	public static final fun inv ([BZ)[B
+	public static synthetic fun inv$default ([BZILjava/lang/Object;)[B
+	public static final fun or ([B[B)[B
+	public static final fun or ([B[BZ)[B
+	public static synthetic fun or$default ([B[BZILjava/lang/Object;)[B
+	public static final fun shl ([BI)[B
+	public static final fun shl ([BIZ)[B
+	public static synthetic fun shl$default ([BIZILjava/lang/Object;)[B
+	public static final fun shr ([BI)[B
+	public static final fun shr ([BIZ)[B
+	public static synthetic fun shr$default ([BIZILjava/lang/Object;)[B
+	public static final fun switchBit ([BIZZ)[B
+	public static final fun switchBit ([BLkotlin/ranges/IntProgression;ZZ)[B
+	public static synthetic fun switchBit$default ([BIZZILjava/lang/Object;)[B
+	public static synthetic fun switchBit$default ([BLkotlin/ranges/IntProgression;ZZILjava/lang/Object;)[B
+	public static final fun switchBitLe ([BIZZ)[B
+	public static final fun switchBitLe ([BLkotlin/ranges/IntProgression;ZZ)[B
+	public static synthetic fun switchBitLe$default ([BIZZILjava/lang/Object;)[B
+	public static synthetic fun switchBitLe$default ([BLkotlin/ranges/IntProgression;ZZILjava/lang/Object;)[B
+	public static final fun xor ([B[B)[B
+	public static final fun xor ([B[BZ)[B
+	public static synthetic fun xor$default ([B[BZILjava/lang/Object;)[B
+}
+
+public final class jp/co/gahojin/bytes/Bytes : jp/co/gahojin/bytes/BaseBytes, java/lang/Cloneable {
+	public static final field Companion Ljp/co/gahojin/bytes/Bytes$Companion;
+	public fun <init> ([B)V
+	public static final fun allocate (I)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun allocate (IB)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun allocate (ILkotlin/jvm/functions/Function1;)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun allocate-EK-6454 (IB)Ljp/co/gahojin/bytes/Bytes;
+	public synthetic fun clone ()Ljava/lang/Object;
+	public fun clone ()Ljp/co/gahojin/bytes/Bytes;
+	public synthetic fun create ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public static final fun empty ()Ljp/co/gahojin/bytes/Bytes;
+	public static final fun from (Ljava/nio/ByteBuffer;)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun from (Ljava/nio/ByteBuffer;I)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun from (Ljava/nio/ByteBuffer;II)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun from ([B)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun from ([BII)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun from ([Ljp/co/gahojin/bytes/Bytes;)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun from-GBYM_sE ([B)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun from-mbSTycY ([BII)Ljp/co/gahojin/bytes/Bytes;
+	public synthetic fun getSelf ()Ljp/co/gahojin/bytes/BaseBytes;
+	public static final fun random (I)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun random (ILjava/util/Random;)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun random (ILkotlin/random/Random;)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun wrap (Ljava/nio/ByteBuffer;)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun wrap ([B)Ljp/co/gahojin/bytes/Bytes;
+	public static final fun wrap-GBYM_sE ([B)Ljp/co/gahojin/bytes/Bytes;
+}
+
+public final class jp/co/gahojin/bytes/Bytes$Companion : jp/co/gahojin/bytes/BaseBytesCompanion {
+	public final fun allocate (I)Ljp/co/gahojin/bytes/Bytes;
+	public final fun allocate (IB)Ljp/co/gahojin/bytes/Bytes;
+	public final fun allocate (ILkotlin/jvm/functions/Function1;)Ljp/co/gahojin/bytes/Bytes;
+	public static synthetic fun allocate$default (Ljp/co/gahojin/bytes/Bytes$Companion;IBILjava/lang/Object;)Ljp/co/gahojin/bytes/Bytes;
+	public final fun allocate-EK-6454 (IB)Ljp/co/gahojin/bytes/Bytes;
+	public synthetic fun create ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun empty ()Ljp/co/gahojin/bytes/Bytes;
+	public final fun from (Ljava/nio/ByteBuffer;)Ljp/co/gahojin/bytes/Bytes;
+	public final fun from (Ljava/nio/ByteBuffer;I)Ljp/co/gahojin/bytes/Bytes;
+	public final fun from (Ljava/nio/ByteBuffer;II)Ljp/co/gahojin/bytes/Bytes;
+	public final fun from ([B)Ljp/co/gahojin/bytes/Bytes;
+	public final fun from ([BII)Ljp/co/gahojin/bytes/Bytes;
+	public final fun from ([Ljp/co/gahojin/bytes/Bytes;)Ljp/co/gahojin/bytes/Bytes;
+	public static synthetic fun from$default (Ljp/co/gahojin/bytes/Bytes$Companion;Ljava/nio/ByteBuffer;IIILjava/lang/Object;)Ljp/co/gahojin/bytes/Bytes;
+	public static synthetic fun from$default (Ljp/co/gahojin/bytes/Bytes$Companion;[BIIILjava/lang/Object;)Ljp/co/gahojin/bytes/Bytes;
+	public final fun from-GBYM_sE ([B)Ljp/co/gahojin/bytes/Bytes;
+	public final fun from-mbSTycY ([BII)Ljp/co/gahojin/bytes/Bytes;
+	public static synthetic fun from-mbSTycY$default (Ljp/co/gahojin/bytes/Bytes$Companion;[BIIILjava/lang/Object;)Ljp/co/gahojin/bytes/Bytes;
+	public synthetic fun getEmpty ()Ljp/co/gahojin/bytes/BaseBytes;
+	public final fun random (I)Ljp/co/gahojin/bytes/Bytes;
+	public final fun random (ILjava/util/Random;)Ljp/co/gahojin/bytes/Bytes;
+	public final fun random (ILkotlin/random/Random;)Ljp/co/gahojin/bytes/Bytes;
+	public static synthetic fun random$default (Ljp/co/gahojin/bytes/Bytes$Companion;ILjava/util/Random;ILjava/lang/Object;)Ljp/co/gahojin/bytes/Bytes;
+	public final fun wrap (Ljava/nio/ByteBuffer;)Ljp/co/gahojin/bytes/Bytes;
+	public final fun wrap ([B)Ljp/co/gahojin/bytes/Bytes;
+	public final fun wrap-GBYM_sE ([B)Ljp/co/gahojin/bytes/Bytes;
+}
+
+public final class jp/co/gahojin/bytes/FromByteArrayKt {
+	public static final fun getInt ([BI)I
+	public static final fun getInt ([BII)I
+	public static final fun getInt24 ([BI)I
+	public static final fun getInt24Le ([BI)I
+	public static final fun getIntLe ([BI)I
+	public static final fun getIntLe ([BII)I
+	public static final fun getLong ([BI)J
+	public static final fun getLong ([BII)J
+	public static final fun getLongLe ([BI)J
+	public static final fun getLongLe ([BII)J
+	public static final fun getShort ([BI)S
+	public static final fun getShortLe ([BI)S
+	public static final fun getUInt ([BI)I
+	public static final fun getUInt ([BII)I
+	public static final fun getUInt24 ([BI)I
+	public static final fun getUInt24Le ([BI)I
+	public static final fun getUIntLe ([BI)I
+	public static final fun getUIntLe ([BII)I
+	public static final fun getULong ([BI)J
+	public static final fun getULong ([BII)J
+	public static final fun getULongLe ([BI)J
+	public static final fun getULongLe ([BII)J
+	public static final fun getUShort ([BI)S
+	public static final fun getUShortLe ([BI)S
+	public static final fun put ([BILjp/co/gahojin/bytes/Bytes;II)V
+	public static synthetic fun put$default ([BILjp/co/gahojin/bytes/Bytes;IIILjava/lang/Object;)V
+	public static final fun putInt ([BII)V
+	public static final fun putInt ([BIII)V
+	public static final fun putInt-BzPDsQc ([BIII)V
+	public static final fun putInt-jXDDuk8 ([BII)V
+	public static final fun putInt24 ([BII)V
+	public static final fun putInt24-jXDDuk8 ([BII)V
+	public static final fun putInt24Le ([BII)V
+	public static final fun putInt24Le-jXDDuk8 ([BII)V
+	public static final fun putIntLe ([BII)V
+	public static final fun putIntLe ([BIII)V
+	public static final fun putIntLe-BzPDsQc ([BIII)V
+	public static final fun putIntLe-jXDDuk8 ([BII)V
+	public static final fun putLong ([BIJ)V
+	public static final fun putLong ([BIJI)V
+	public static final fun putLong-HFZJxNs ([BIJI)V
+	public static final fun putLong-aPcrCvc ([BIJ)V
+	public static final fun putLongLe ([BIJ)V
+	public static final fun putLongLe ([BIJI)V
+	public static final fun putLongLe-HFZJxNs ([BIJI)V
+	public static final fun putLongLe-aPcrCvc ([BIJ)V
+	public static final fun putShort ([BII)V
+	public static final fun putShort ([BIS)V
+	public static final fun putShort-3IiRHeE ([BIS)V
+	public static final fun putShort-jXDDuk8 ([BII)V
+	public static final fun putShortLe ([BII)V
+	public static final fun putShortLe ([BIS)V
+	public static final fun putShortLe-3IiRHeE ([BIS)V
+	public static final fun putShortLe-jXDDuk8 ([BII)V
+}
+
+public final class jp/co/gahojin/bytes/FromUByteArrayKt {
+	public static final fun getInt-mbSTycY ([BII)I
+	public static final fun getInt-rto03Yo ([BI)I
+	public static final fun getInt24-rto03Yo ([BI)I
+	public static final fun getInt24Le-rto03Yo ([BI)I
+	public static final fun getIntLe-mbSTycY ([BII)I
+	public static final fun getIntLe-rto03Yo ([BI)I
+	public static final fun getLong-mbSTycY ([BII)J
+	public static final fun getLong-rto03Yo ([BI)J
+	public static final fun getLongLe-mbSTycY ([BII)J
+	public static final fun getLongLe-rto03Yo ([BI)J
+	public static final fun getShort-rto03Yo ([BI)S
+	public static final fun getShortLe-rto03Yo ([BI)S
+	public static final fun getUInt-mbSTycY ([BII)I
+	public static final fun getUInt-rto03Yo ([BI)I
+	public static final fun getUInt24-rto03Yo ([BI)I
+	public static final fun getUInt24Le-rto03Yo ([BI)I
+	public static final fun getUIntLe-mbSTycY ([BII)I
+	public static final fun getUIntLe-rto03Yo ([BI)I
+	public static final fun getULong-mbSTycY ([BII)J
+	public static final fun getULong-rto03Yo ([BI)J
+	public static final fun getULongLe-mbSTycY ([BII)J
+	public static final fun getULongLe-rto03Yo ([BI)J
+	public static final fun getUShort-rto03Yo ([BI)S
+	public static final fun getUShortLe-rto03Yo ([BI)S
+	public static final fun put-_-6wxtI ([BILjp/co/gahojin/bytes/Bytes;II)V
+	public static synthetic fun put-_-6wxtI$default ([BILjp/co/gahojin/bytes/Bytes;IIILjava/lang/Object;)V
+	public static final fun putInt-4NJYg6o ([BIII)V
+	public static final fun putInt-GxOs86I ([BII)V
+	public static final fun putInt-UCuZD-g ([BIII)V
+	public static final fun putInt-mbSTycY ([BII)V
+	public static final fun putInt24-GxOs86I ([BII)V
+	public static final fun putInt24-mbSTycY ([BII)V
+	public static final fun putInt24Le-GxOs86I ([BII)V
+	public static final fun putInt24Le-mbSTycY ([BII)V
+	public static final fun putIntLe-4NJYg6o ([BIII)V
+	public static final fun putIntLe-GxOs86I ([BII)V
+	public static final fun putIntLe-UCuZD-g ([BIII)V
+	public static final fun putIntLe-mbSTycY ([BII)V
+	public static final fun putLong-0mpB35U ([BIJ)V
+	public static final fun putLong-UCuZD-g ([BIJI)V
+	public static final fun putLong-mbSTycY ([BIJ)V
+	public static final fun putLong-y0cOvXc ([BIJI)V
+	public static final fun putLongLe-0mpB35U ([BIJ)V
+	public static final fun putLongLe-UCuZD-g ([BIJI)V
+	public static final fun putLongLe-mbSTycY ([BIJ)V
+	public static final fun putLongLe-y0cOvXc ([BIJI)V
+	public static final fun putShort-GxOs86I ([BII)V
+	public static final fun putShort-HFnTLD8 ([BIS)V
+	public static final fun putShort-mbSTycY ([BII)V
+	public static final fun putShort-mbSTycY ([BIS)V
+	public static final fun putShortLe-GxOs86I ([BII)V
+	public static final fun putShortLe-HFnTLD8 ([BIS)V
+	public static final fun putShortLe-mbSTycY ([BII)V
+	public static final fun putShortLe-mbSTycY ([BIS)V
+}
+
+public final class jp/co/gahojin/bytes/ResizeKt {
+	public static final fun copyOf ([BILjp/co/gahojin/bytes/ResizeStrategy;)[B
+	public static final fun copyOf-mbSTycY ([BILjp/co/gahojin/bytes/ResizeStrategy;)[B
+}
+
+public final class jp/co/gahojin/bytes/ResizeStrategy : java/lang/Enum {
+	public static final field MAX_LENGTH Ljp/co/gahojin/bytes/ResizeStrategy;
+	public static final field ZERO_INDEX Ljp/co/gahojin/bytes/ResizeStrategy;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ljp/co/gahojin/bytes/ResizeStrategy;
+	public static fun values ()[Ljp/co/gahojin/bytes/ResizeStrategy;
+}
+
+public final class jp/co/gahojin/bytes/ToByteArrayKt {
+	public static final fun toByteArray (I)[B
+	public static final fun toByteArray (II)[B
+	public static final fun toByteArray (I[B)V
+	public static final fun toByteArray (I[BI)V
+	public static final fun toByteArray (I[BII)V
+	public static final fun toByteArray (J)[B
+	public static final fun toByteArray (JI)[B
+	public static final fun toByteArray (J[B)V
+	public static final fun toByteArray (J[BI)V
+	public static final fun toByteArray (J[BII)V
+	public static final fun toByteArray (S)[B
+	public static final fun toByteArray (S[B)V
+	public static final fun toByteArray (S[BI)V
+	public static synthetic fun toByteArray$default (I[BIIILjava/lang/Object;)V
+	public static synthetic fun toByteArray$default (I[BIILjava/lang/Object;)V
+	public static synthetic fun toByteArray$default (J[BIIILjava/lang/Object;)V
+	public static synthetic fun toByteArray$default (J[BIILjava/lang/Object;)V
+	public static synthetic fun toByteArray$default (S[BIILjava/lang/Object;)V
+	public static final fun toByteArray-4PLdz1A (JI)[B
+	public static final fun toByteArray-E0BElUM (J[BI)V
+	public static synthetic fun toByteArray-E0BElUM$default (J[BIILjava/lang/Object;)V
+	public static final fun toByteArray-OzbTU-A (I[BI)V
+	public static synthetic fun toByteArray-OzbTU-A$default (I[BIILjava/lang/Object;)V
+	public static final fun toByteArray-SGjrQA4 (I[BII)V
+	public static synthetic fun toByteArray-SGjrQA4$default (I[BIIILjava/lang/Object;)V
+	public static final fun toByteArray-VKZWuLQ (J)[B
+	public static final fun toByteArray-WZ4Q5Ns (I)[B
+	public static final fun toByteArray-_TFR7lA (S[BI)V
+	public static synthetic fun toByteArray-_TFR7lA$default (S[BIILjava/lang/Object;)V
+	public static final fun toByteArray-qim9Vi0 (II)[B
+	public static final fun toByteArray-v3sQxsQ (J[BII)V
+	public static synthetic fun toByteArray-v3sQxsQ$default (J[BIIILjava/lang/Object;)V
+	public static final fun toByteArray-xj2QHRw (S)[B
+	public static final fun toByteArrayLe (I)[B
+	public static final fun toByteArrayLe (II)[B
+	public static final fun toByteArrayLe (I[B)V
+	public static final fun toByteArrayLe (I[BI)V
+	public static final fun toByteArrayLe (I[BII)V
+	public static final fun toByteArrayLe (J)[B
+	public static final fun toByteArrayLe (JI)[B
+	public static final fun toByteArrayLe (J[B)V
+	public static final fun toByteArrayLe (J[BI)V
+	public static final fun toByteArrayLe (J[BII)V
+	public static final fun toByteArrayLe (S)[B
+	public static final fun toByteArrayLe (S[B)V
+	public static final fun toByteArrayLe (S[BI)V
+	public static synthetic fun toByteArrayLe$default (I[BIIILjava/lang/Object;)V
+	public static synthetic fun toByteArrayLe$default (I[BIILjava/lang/Object;)V
+	public static synthetic fun toByteArrayLe$default (J[BIIILjava/lang/Object;)V
+	public static synthetic fun toByteArrayLe$default (J[BIILjava/lang/Object;)V
+	public static synthetic fun toByteArrayLe$default (S[BIILjava/lang/Object;)V
+	public static final fun toByteArrayLe-4PLdz1A (JI)[B
+	public static final fun toByteArrayLe-E0BElUM (J[BI)V
+	public static synthetic fun toByteArrayLe-E0BElUM$default (J[BIILjava/lang/Object;)V
+	public static final fun toByteArrayLe-OzbTU-A (I[BI)V
+	public static synthetic fun toByteArrayLe-OzbTU-A$default (I[BIILjava/lang/Object;)V
+	public static final fun toByteArrayLe-SGjrQA4 (I[BII)V
+	public static synthetic fun toByteArrayLe-SGjrQA4$default (I[BIIILjava/lang/Object;)V
+	public static final fun toByteArrayLe-VKZWuLQ (J)[B
+	public static final fun toByteArrayLe-WZ4Q5Ns (I)[B
+	public static final fun toByteArrayLe-_TFR7lA (S[BI)V
+	public static synthetic fun toByteArrayLe-_TFR7lA$default (S[BIILjava/lang/Object;)V
+	public static final fun toByteArrayLe-qim9Vi0 (II)[B
+	public static final fun toByteArrayLe-v3sQxsQ (J[BII)V
+	public static synthetic fun toByteArrayLe-v3sQxsQ$default (J[BIIILjava/lang/Object;)V
+	public static final fun toByteArrayLe-xj2QHRw (S)[B
+}
+
+public final class jp/co/gahojin/bytes/ToUByteArrayKt {
+	public static final fun toUByteArray (I)[B
+	public static final fun toUByteArray (II)[B
+	public static final fun toUByteArray (J)[B
+	public static final fun toUByteArray (JI)[B
+	public static final fun toUByteArray (S)[B
+	public static final fun toUByteArray-4PLdz1A (JI)[B
+	public static final fun toUByteArray-6VZi3Ig (S[BI)V
+	public static synthetic fun toUByteArray-6VZi3Ig$default (S[BIILjava/lang/Object;)V
+	public static final fun toUByteArray-9y7qFRA (J[BI)V
+	public static synthetic fun toUByteArray-9y7qFRA$default (J[BIILjava/lang/Object;)V
+	public static final fun toUByteArray-Coi6ktg (I[BI)V
+	public static final fun toUByteArray-Coi6ktg (J[BI)V
+	public static final fun toUByteArray-Coi6ktg (S[BI)V
+	public static synthetic fun toUByteArray-Coi6ktg$default (I[BIILjava/lang/Object;)V
+	public static synthetic fun toUByteArray-Coi6ktg$default (J[BIILjava/lang/Object;)V
+	public static synthetic fun toUByteArray-Coi6ktg$default (S[BIILjava/lang/Object;)V
+	public static final fun toUByteArray-EyEcuw4 (J[BII)V
+	public static synthetic fun toUByteArray-EyEcuw4$default (J[BIIILjava/lang/Object;)V
+	public static final fun toUByteArray-VKZWuLQ (J)[B
+	public static final fun toUByteArray-WZ4Q5Ns (I)[B
+	public static final fun toUByteArray-guEwu30 (I[BI)V
+	public static synthetic fun toUByteArray-guEwu30$default (I[BIILjava/lang/Object;)V
+	public static final fun toUByteArray-o1GoV1E (I[BII)V
+	public static final fun toUByteArray-o1GoV1E (J[BII)V
+	public static synthetic fun toUByteArray-o1GoV1E$default (I[BIIILjava/lang/Object;)V
+	public static synthetic fun toUByteArray-o1GoV1E$default (J[BIIILjava/lang/Object;)V
+	public static final fun toUByteArray-qim9Vi0 (II)[B
+	public static synthetic fun toUByteArray-qim9Vi0$default (IIILjava/lang/Object;)[B
+	public static final fun toUByteArray-wbBqn6I (I[BII)V
+	public static synthetic fun toUByteArray-wbBqn6I$default (I[BIIILjava/lang/Object;)V
+	public static final fun toUByteArray-xj2QHRw (S)[B
+	public static final fun toUByteArrayLe (I)[B
+	public static final fun toUByteArrayLe (II)[B
+	public static final fun toUByteArrayLe (J)[B
+	public static final fun toUByteArrayLe (JI)[B
+	public static final fun toUByteArrayLe (S)[B
+	public static final fun toUByteArrayLe-4PLdz1A (JI)[B
+	public static final fun toUByteArrayLe-6VZi3Ig (S[BI)V
+	public static synthetic fun toUByteArrayLe-6VZi3Ig$default (S[BIILjava/lang/Object;)V
+	public static final fun toUByteArrayLe-9y7qFRA (J[BI)V
+	public static synthetic fun toUByteArrayLe-9y7qFRA$default (J[BIILjava/lang/Object;)V
+	public static final fun toUByteArrayLe-Coi6ktg (I[BI)V
+	public static final fun toUByteArrayLe-Coi6ktg (J[BI)V
+	public static final fun toUByteArrayLe-Coi6ktg (S[BI)V
+	public static synthetic fun toUByteArrayLe-Coi6ktg$default (I[BIILjava/lang/Object;)V
+	public static synthetic fun toUByteArrayLe-Coi6ktg$default (J[BIILjava/lang/Object;)V
+	public static synthetic fun toUByteArrayLe-Coi6ktg$default (S[BIILjava/lang/Object;)V
+	public static final fun toUByteArrayLe-EyEcuw4 (J[BII)V
+	public static synthetic fun toUByteArrayLe-EyEcuw4$default (J[BIIILjava/lang/Object;)V
+	public static final fun toUByteArrayLe-VKZWuLQ (J)[B
+	public static final fun toUByteArrayLe-WZ4Q5Ns (I)[B
+	public static final fun toUByteArrayLe-guEwu30 (I[BI)V
+	public static synthetic fun toUByteArrayLe-guEwu30$default (I[BIILjava/lang/Object;)V
+	public static final fun toUByteArrayLe-o1GoV1E (I[BII)V
+	public static final fun toUByteArrayLe-o1GoV1E (J[BII)V
+	public static synthetic fun toUByteArrayLe-o1GoV1E$default (I[BIIILjava/lang/Object;)V
+	public static synthetic fun toUByteArrayLe-o1GoV1E$default (J[BIIILjava/lang/Object;)V
+	public static final fun toUByteArrayLe-qim9Vi0 (II)[B
+	public static final fun toUByteArrayLe-wbBqn6I (I[BII)V
+	public static synthetic fun toUByteArrayLe-wbBqn6I$default (I[BIIILjava/lang/Object;)V
+	public static final fun toUByteArrayLe-xj2QHRw (S)[B
+}
+
+public final class jp/co/gahojin/bytes/UByteArrayBinaryKt {
+	public static final fun and-uo5YlkA ([B[B)[B
+	public static final fun and-wl1WTbA ([B[BZ)[B
+	public static synthetic fun and-wl1WTbA$default ([B[BZILjava/lang/Object;)[B
+	public static final fun flipBit-mbSTycY ([BIZ)[B
+	public static final fun flipBit-mbSTycY ([BLkotlin/ranges/IntProgression;Z)[B
+	public static synthetic fun flipBit-mbSTycY$default ([BIZILjava/lang/Object;)[B
+	public static synthetic fun flipBit-mbSTycY$default ([BLkotlin/ranges/IntProgression;ZILjava/lang/Object;)[B
+	public static final fun flipBitLe-mbSTycY ([BIZ)[B
+	public static final fun flipBitLe-mbSTycY ([BLkotlin/ranges/IntProgression;Z)[B
+	public static synthetic fun flipBitLe-mbSTycY$default ([BIZILjava/lang/Object;)[B
+	public static synthetic fun flipBitLe-mbSTycY$default ([BLkotlin/ranges/IntProgression;ZILjava/lang/Object;)[B
+	public static final fun getBit-rto03Yo ([BI)Z
+	public static final fun getBitLe-rto03Yo ([BI)Z
+	public static final fun inv-rto03Yo ([BZ)[B
+	public static synthetic fun inv-rto03Yo$default ([BZILjava/lang/Object;)[B
+	public static final fun or-uo5YlkA ([B[B)[B
+	public static final fun or-wl1WTbA ([B[BZ)[B
+	public static synthetic fun or-wl1WTbA$default ([B[BZILjava/lang/Object;)[B
+	public static final fun shl-mbSTycY ([BIZ)[B
+	public static synthetic fun shl-mbSTycY$default ([BIZILjava/lang/Object;)[B
+	public static final fun shl-rto03Yo ([BI)[B
+	public static final fun shr-mbSTycY ([BIZ)[B
+	public static synthetic fun shr-mbSTycY$default ([BIZILjava/lang/Object;)[B
+	public static final fun shr-rto03Yo ([BI)[B
+	public static final fun switchBit-UCuZD-g ([BIZZ)[B
+	public static final fun switchBit-UCuZD-g ([BLkotlin/ranges/IntProgression;ZZ)[B
+	public static synthetic fun switchBit-UCuZD-g$default ([BIZZILjava/lang/Object;)[B
+	public static synthetic fun switchBit-UCuZD-g$default ([BLkotlin/ranges/IntProgression;ZZILjava/lang/Object;)[B
+	public static final fun switchBitLe-UCuZD-g ([BIZZ)[B
+	public static final fun switchBitLe-UCuZD-g ([BLkotlin/ranges/IntProgression;ZZ)[B
+	public static synthetic fun switchBitLe-UCuZD-g$default ([BIZZILjava/lang/Object;)[B
+	public static synthetic fun switchBitLe-UCuZD-g$default ([BLkotlin/ranges/IntProgression;ZZILjava/lang/Object;)[B
+	public static final fun xor-uo5YlkA ([B[B)[B
+	public static final fun xor-wl1WTbA ([B[BZ)[B
+	public static synthetic fun xor-wl1WTbA$default ([B[BZILjava/lang/Object;)[B
+}
+
+public final class jp/co/gahojin/bytes/UtilKt {
+	public static final fun and (BI)I
+	public static final fun and (BJ)J
+	public static final fun and-apjzmAw (BJ)J
+	public static final fun and-g_SBl1M (BI)I
+	public static final fun getUint (B)I
+	public static final fun getUlong (B)J
+	public static final fun shl (BI)I
+	public static final fun shl-0ky7B_Q (BI)I
+	public static final fun shr (BI)I
+	public static final fun shr-0ky7B_Q (BI)I
+	public static final fun unsignedToSigned (II)I
+	public static final fun unsignedToSigned (JI)J
+	public static final fun unsignedToSigned-4PLdz1A (JI)J
+	public static final fun unsignedToSigned-qim9Vi0 (II)I
+}
+
