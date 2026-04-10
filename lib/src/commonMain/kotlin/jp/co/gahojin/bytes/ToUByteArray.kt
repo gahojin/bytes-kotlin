@@ -6,7 +6,7 @@ fun Short.toUByteArrayLe(): UByteArray = UByteArray(2).also { it.putShortLe(0, t
 
 fun Short.toUByteArray(dest: UByteArray, index: Int = 0) = dest.putShort(index, this)
 
-fun Short.toUByteArrayLe(dest: UByteArray, index: Int = 0)= dest.putShortLe(index, this)
+fun Short.toUByteArrayLe(dest: UByteArray, index: Int = 0) = dest.putShortLe(index, this)
 
 fun UShort.toUByteArray(): UByteArray = UByteArray(2).also { it.putShort(0, this) }
 

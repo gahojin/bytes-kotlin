@@ -1,8 +1,5 @@
 package jp.co.gahojin.bytes
 
-import kotlin.jvm.JvmOverloads
-import kotlin.jvm.JvmStatic
-
 actual class Bytes actual constructor(
     storage: ByteArray,
 ) : BaseBytes<Bytes>(storage) {

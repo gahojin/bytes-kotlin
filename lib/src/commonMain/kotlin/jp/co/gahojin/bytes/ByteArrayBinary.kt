@@ -171,6 +171,6 @@ private fun getByteIndex(size: Int, index: Int): Int {
 }
 
 @Suppress("UNUSED_PARAMETER")
-private fun getByteIndexLe( size: Int, index: Int): Int {
+private fun getByteIndexLe(size: Int, index: Int): Int {
     return index / 8
 }
