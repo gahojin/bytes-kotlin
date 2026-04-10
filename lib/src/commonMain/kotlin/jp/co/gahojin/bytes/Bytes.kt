@@ -2,8 +2,6 @@
 
 package jp.co.gahojin.bytes
 
-import kotlin.jvm.JvmOverloads
-
 expect class Bytes private constructor(
     storage: ByteArray,
 ) : BaseBytes<Bytes> {

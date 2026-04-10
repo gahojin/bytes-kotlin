@@ -1,3 +1,4 @@
+import com.android.build.api.withAndroid
 import com.vanniktech.maven.publish.KotlinMultiplatform
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.SourcesJar
@@ -36,11 +37,25 @@ kotlin {
         compilerOptions {
             jvmTarget = JvmTarget.JVM_11
         }
+
+        packaging {
+            resources.pickFirsts.addAll(arrayOf("META-INF/AL2.0", "META-INF/LGPL2.1"))
+        }
     }
     iosArm64()
     iosSimulatorArm64()
     macosArm64()
     linuxX64()
+
+    @Suppress("OPT_IN_USAGE")
+    applyDefaultHierarchyTemplate {
+        common {
+            group("commonJvm") {
+                withAndroid()
+                withJvm()
+            }
+        }
+    }
 
     sourceSets {
         commonMain {

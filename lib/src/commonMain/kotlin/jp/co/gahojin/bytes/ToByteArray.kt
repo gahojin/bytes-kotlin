@@ -78,7 +78,7 @@ fun ULong.toByteArray(length: Int): ByteArray = ByteArray(length).also { it.putL
 
 fun ULong.toByteArrayLe(): ByteArray = ByteArray(8).also { it.putLongLe(0, this) }
 
-fun ULong.toByteArrayLe(length: Int): ByteArray = ByteArray(length).also { it.putLongLe(0, this,length) }
+fun ULong.toByteArrayLe(length: Int): ByteArray = ByteArray(length).also { it.putLongLe(0, this, length) }
 
 fun ULong.toByteArray(dest: ByteArray, index: Int = 0) = dest.putLong(index, this)
 

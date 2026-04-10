@@ -159,18 +159,17 @@ public abstract class jp/co/gahojin/bytes/BaseBytes : java/lang/Comparable, java
 
 public abstract class jp/co/gahojin/bytes/BaseBytesCompanion {
 	public fun <init> ()V
-	public final fun commonAllocate (IB)Ljp/co/gahojin/bytes/BaseBytes;
-	public final fun commonAllocate (ILkotlin/jvm/functions/Function1;)Ljp/co/gahojin/bytes/BaseBytes;
+	protected final fun commonAllocate (IB)Ljp/co/gahojin/bytes/BaseBytes;
+	protected final fun commonAllocate (ILkotlin/jvm/functions/Function1;)Ljp/co/gahojin/bytes/BaseBytes;
 	public static synthetic fun commonAllocate$default (Ljp/co/gahojin/bytes/BaseBytesCompanion;IBILjava/lang/Object;)Ljp/co/gahojin/bytes/BaseBytes;
-	public final fun commonAllocate-EK-6454 (IB)Ljp/co/gahojin/bytes/BaseBytes;
-	public final fun commonEmpty ()Ljp/co/gahojin/bytes/BaseBytes;
-	public final fun commonFrom ([B)Ljp/co/gahojin/bytes/BaseBytes;
-	public final fun commonFrom ([BII)Ljp/co/gahojin/bytes/BaseBytes;
-	public final fun commonFrom ([Ljp/co/gahojin/bytes/BaseBytes;)Ljp/co/gahojin/bytes/BaseBytes;
-	public final fun commonFrom-GBYM_sE ([B)Ljp/co/gahojin/bytes/BaseBytes;
-	public final fun commonFrom-mbSTycY ([BII)Ljp/co/gahojin/bytes/BaseBytes;
-	public final fun commonWrap ([B)Ljp/co/gahojin/bytes/BaseBytes;
-	public final fun commonWrap-GBYM_sE ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	protected final fun commonAllocate-EK-6454 (IB)Ljp/co/gahojin/bytes/BaseBytes;
+	protected final fun commonFrom ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	protected final fun commonFrom ([BII)Ljp/co/gahojin/bytes/BaseBytes;
+	protected final fun commonFrom ([Ljp/co/gahojin/bytes/BaseBytes;)Ljp/co/gahojin/bytes/BaseBytes;
+	protected final fun commonFrom-GBYM_sE ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	protected final fun commonFrom-mbSTycY ([BII)Ljp/co/gahojin/bytes/BaseBytes;
+	protected final fun commonWrap ([B)Ljp/co/gahojin/bytes/BaseBytes;
+	protected final fun commonWrap-GBYM_sE ([B)Ljp/co/gahojin/bytes/BaseBytes;
 	protected abstract fun create ([B)Ljp/co/gahojin/bytes/BaseBytes;
 	protected abstract fun getEmpty ()Ljp/co/gahojin/bytes/BaseBytes;
 }
