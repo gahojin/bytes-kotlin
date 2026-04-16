@@ -18,6 +18,7 @@ plugins {
     id("signing")
 }
 
+val artifactId = "bytes-kotlin"
 group = "jp.co.gahojin.bytes-kotlin"
 version = "2026.4.1"
 
@@ -25,8 +26,8 @@ kotlin {
     jvm()
     android {
         namespace = "jp.co.gahojin.bytes"
-        compileSdk = 36
-        minSdk = 23
+        compileSdk = libs.versions.android.compile.sdk.get().toInt()
+        minSdk = libs.versions.android.min.sdk.get().toInt()
 
         withJava()
         withHostTestBuilder {}.configure {}
@@ -35,7 +36,7 @@ kotlin {
         }
 
         compilerOptions {
-            jvmTarget = JvmTarget.JVM_11
+            jvmTarget = JvmTarget.fromTarget(libs.versions.java.get())
         }
 
         packaging {
@@ -121,10 +122,10 @@ mavenPublishing {
         signAllPublications()
     }
 
-    coordinates(group.toString(), "bytes-kotlin", version.toString())
+    coordinates(group.toString(), artifactId, version.toString())
 
     pom {
-        name ="bytes-kotlin"
+        name = artifactId
         description = "Bytes Utilities for Kotlin"
         url = "https://github.com/gahojin/bytes-kotlin/"
         licenses {
