@@ -18,7 +18,7 @@ google-devtools-ksp = "2.3.7"
 
 kotest = "6.1.11"
 
-kotlin = "2.3.20"
+kotlin = "2.3.21"
 
 kotlin-serialization = "1.11.0"
 
