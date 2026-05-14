@@ -11,6 +11,7 @@ permissions: {}
 jobs:
   publish:
     name: Release build and publish
+    if: github.repository == 'gahojin/bytes-kotlin'
     timeout-minutes: 30
     runs-on: macOS-latest
 
