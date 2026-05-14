@@ -107,6 +107,12 @@ tasks.named<Test>("jvmTest") {
     }
 }
 
+tasks.register("testClasses") {
+    group = "build"
+    description = "Run all tests."
+    dependsOn("jvmTestClasses")
+}
+
 signing {
     isRequired = project.hasProperty("signingInMemoryKey") || providers.environmentVariable("ORG_GRADLE_PROJECT_signingInMemoryKey").isPresent
 }
