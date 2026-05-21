@@ -1,4 +1,8 @@
+[settings]
+minimum_release_age = "7d"
+
 [tools]
+gitleaks = "latest"
 lefthook = "latest"
 node = "24"
 "npm:@commitlint/cli" = "latest"
@@ -6,4 +10,3 @@ node = "24"
 python = "latest"
 uv = "latest"
 "pipx:bumpver" = "latest"
-gitleaks = "latest"
