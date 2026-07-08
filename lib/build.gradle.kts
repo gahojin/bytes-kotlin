@@ -20,7 +20,7 @@ plugins {
 
 val artifactId = "bytes-kotlin"
 group = "jp.co.gahojin.bytes-kotlin"
-version = "2026.4.1"
+version = "2026.7.0"
 
 kotlin {
     jvm()
