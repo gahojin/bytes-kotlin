@@ -105,6 +105,9 @@ class UByteArrayBinaryTest : FunSpec({
         sut.shl(1, true) shouldBe ubyteArrayOf(0xfeu, 0x01u, 0x4au)
         sut shouldBe ubyteArrayOf(0xfeu, 0x01u, 0x4au)
 
+        // 大きなシフト
+        ubyteArrayOf(0x01u, 0x02u, 0x03u) shl 24 shouldBe ubyteArrayOf(0x00u, 0x00u, 0x00u)
+        ubyteArrayOf(0x01u, 0x02u, 0x03u) shl 8 shouldBe ubyteArrayOf(0x02u, 0x03u, 0x00u)
     }
 
     test("shr") {
@@ -125,6 +128,10 @@ class UByteArrayBinaryTest : FunSpec({
         // 上書きされていること
         sut.shr(1, true) shouldBe ubyteArrayOf(0x7fu, 0x80u, 0x52u)
         sut shouldBe ubyteArrayOf(0x7fu, 0x80u, 0x52u)
+
+        // 大きなシフト
+        ubyteArrayOf(0x01u, 0x02u, 0x03u) shr 24 shouldBe ubyteArrayOf(0x00u, 0x00u, 0x00u)
+        ubyteArrayOf(0x01u, 0x02u, 0x03u) shr 8 shouldBe ubyteArrayOf(0x00u, 0x01u, 0x02u)
     }
 
     test("getBit") {
@@ -134,6 +141,10 @@ class UByteArrayBinaryTest : FunSpec({
         sut.getBit(1) shouldBe true
         sut.getBit(4) shouldBe false
         sut.getBit(8) shouldBe true
+        sut.getBit(15) shouldBe true
+
+        shouldThrow<IllegalArgumentException> { sut.getBit(-1) }
+        shouldThrow<IllegalArgumentException> { sut.getBit(16) }
     }
 
     test("getBitLe") {

@@ -30,7 +30,7 @@ class UtilTest : FunSpec({
         sut shl 2 shouldBe 0x0294u
     }
 
-   test("UByte.shr") {
+    test("UByte.shr") {
         val sut: UByte = 0xa5u
         sut shr 1 shouldBe 0x52u
         sut shr 2 shouldBe 0x29u
@@ -53,8 +53,12 @@ class UtilTest : FunSpec({
         }
 
         checkAll<Short> { a ->
-            a.toInt().unsignedToSigned(16) shouldBe a
+            a.toInt().unsignedToSigned(16) shouldBe a.toInt()
         }
+
+        0xFF.unsignedToSigned(8) shouldBe -1
+        0x7F.unsignedToSigned(8) shouldBe 127
+        0x80.unsignedToSigned(8) shouldBe -128
     }
 
     test("Long.unsignedToSigned") {
@@ -64,7 +68,11 @@ class UtilTest : FunSpec({
         }
 
         checkAll<Int> { a ->
-            a.toLong().unsignedToSigned(32) shouldBe a
+            a.toLong().unsignedToSigned(32) shouldBe a.toLong()
         }
+
+        0xFFL.unsignedToSigned(8) shouldBe -1L
+        0x7FL.unsignedToSigned(8) shouldBe 127L
+        0x80L.unsignedToSigned(8) shouldBe -128L
     }
 })

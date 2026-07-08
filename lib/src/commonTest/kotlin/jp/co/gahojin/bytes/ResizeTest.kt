@@ -30,6 +30,20 @@ class ResizeTest : FunSpec({
             ) shouldBe ByteArray(20) { if (it < 10) it.toByte() else 0x00 }
             sut.copyOf(20, ResizeStrategy.MAX_LENGTH) shouldBe ByteArray(20) { maxOf(0, it - 10).toByte() }
 
+            // strategy 別の挙動 (size=3 -> newSize=5)
+            // ZERO_INDEX: [1, 2, 3, 0, 0]
+            // MAX_LENGTH: [0, 0, 1, 2, 3]
+            val s3 = byteArrayOf(0x01, 0x02, 0x03)
+            s3.copyOf(5, ResizeStrategy.ZERO_INDEX) shouldBe byteArrayOf(0x01, 0x02, 0x03, 0x00, 0x00)
+            s3.copyOf(5, ResizeStrategy.MAX_LENGTH) shouldBe byteArrayOf(0x00, 0x00, 0x01, 0x02, 0x03)
+
+            // strategy 別の挙動 (size=5 -> newSize=3)
+            // ZERO_INDEX: [0, 1, 2]
+            // MAX_LENGTH: [2, 3, 4]
+            val s5 = byteArrayOf(0x00, 0x01, 0x02, 0x03, 0x04)
+            s5.copyOf(3, ResizeStrategy.ZERO_INDEX) shouldBe byteArrayOf(0x00, 0x01, 0x02)
+            s5.copyOf(3, ResizeStrategy.MAX_LENGTH) shouldBe byteArrayOf(0x02, 0x03, 0x04)
+
             // 範囲外
             shouldThrow<IllegalArgumentException> {
                 sut.copyOf(-1, ResizeStrategy.MAX_LENGTH)

@@ -86,11 +86,13 @@ fun ByteArray.shr(bitCount: Int, inPlace: Boolean = false): ByteArray {
 }
 
 fun ByteArray.getBit(bitIndex: Int): Boolean {
-    return ((this[size - bitIndex / 8 - 1] shr (bitIndex % 8)) and 0x01) != 0
+    require(bitIndex in 0 until (size shl 3)) { "bitIndex $bitIndex out of bounds" }
+    return ((this[size - bitIndex / 8 - 1].uint shr (bitIndex % 8)) and 0x01) != 0
 }
 
 fun ByteArray.getBitLe(bitIndex: Int): Boolean {
-    return ((this[bitIndex / 8] shr (bitIndex % 8)) and 0x01) != 0
+    require(bitIndex in 0 until (size shl 3)) { "bitIndex $bitIndex out of bounds" }
+    return ((this[bitIndex / 8].uint shr (bitIndex % 8)) and 0x01) != 0
 }
 
 fun ByteArray.switchBit(bitIndex: Int, value: Boolean, inPlace: Boolean = false): ByteArray {
@@ -133,7 +135,11 @@ fun ByteArray.flipBitLe(indexRange: IntProgression, inPlace: Boolean = false): B
     return switchBit(indexRange, inPlace, ::getByteIndexLe) { bit, v -> v xor bit }
 }
 
-private inline fun ByteArray.bitWise(second: ByteArray, inPlace: Boolean, block: (a: Byte, b: Byte) -> Byte): ByteArray {
+private inline fun ByteArray.bitWise(
+    second: ByteArray,
+    inPlace: Boolean,
+    block: (a: Byte, b: Byte) -> Byte,
+): ByteArray {
     require(size == second.size) { "must match exactly one of ${second.size} bytes" }
 
     val target = prepareTarget(inPlace)

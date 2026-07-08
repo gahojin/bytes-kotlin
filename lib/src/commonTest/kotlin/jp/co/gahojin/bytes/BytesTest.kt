@@ -7,7 +7,11 @@ import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.types.shouldBeSameInstanceAs
 import io.kotest.matchers.types.shouldNotBeSameInstanceAs
 import io.kotest.property.Arb
-import io.kotest.property.arbitrary.*
+import io.kotest.property.arbitrary.byte
+import io.kotest.property.arbitrary.byteArray
+import io.kotest.property.arbitrary.int
+import io.kotest.property.arbitrary.uByte
+import io.kotest.property.arbitrary.uByteArray
 import io.kotest.property.checkAll
 import kotlin.random.Random
 import kotlin.random.nextUBytes
@@ -39,6 +43,7 @@ class BytesTest : FunSpec({
         val sut = Bytes.from(0x01u, 0x02u, 0x03u)
         sut.containsAll(listOf(0x02, 0x01)) shouldBe true
         sut.containsAll(listOf(0x02, 0x04)) shouldBe false
+        sut.containsAll(emptyList()) shouldBe true
     }
 
     test("contains") {
@@ -118,6 +123,14 @@ class BytesTest : FunSpec({
         }
         // 0 size
         Bytes.allocate(0).equals(Bytes.empty()) shouldBe true
+
+        // 同じ内容あが、異なる型の場合、同じと見なされるか (BaseBytesでチェックしているか)
+        val b1 = Bytes.allocate(4, 0x01.toByte())
+        val b2 = object : BaseBytes<Bytes>(byteArrayOf(0x01, 0x01, 0x01, 0x01)) {
+            override fun create(storage: ByteArray) = b1
+            override val self = b1
+        }
+        b1.equals(b2) shouldBe true
     }
 
     test("contentEquals") {
