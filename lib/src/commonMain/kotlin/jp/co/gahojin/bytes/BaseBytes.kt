@@ -38,6 +38,7 @@ abstract class BaseBytes<T : BaseBytes<T>> internal constructor(
                     i++
                     continue
                 }
+
                 byteA < byteB -> -1
                 else -> 1
             }
@@ -56,7 +57,7 @@ abstract class BaseBytes<T : BaseBytes<T>> internal constructor(
     override fun equals(other: Any?): Boolean {
         return when {
             this === other -> true
-            other !is Bytes -> false
+            other !is BaseBytes<*> -> false
             else -> storage.contentEquals(other.storage)
         }
     }

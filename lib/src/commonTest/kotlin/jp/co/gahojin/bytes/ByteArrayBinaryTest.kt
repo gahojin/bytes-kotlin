@@ -104,6 +104,9 @@ class ByteArrayBinaryTest : FunSpec({
         sut.shl(1, true) shouldBe byteArrayOf(0xfe.toByte(), 0x01, 0x4a)
         sut shouldBe byteArrayOf(0xfe.toByte(), 0x01, 0x4a)
 
+        // 大きなシフト
+        byteArrayOf(0x01, 0x02, 0x03) shl 24 shouldBe byteArrayOf(0x00, 0x00, 0x00)
+        byteArrayOf(0x01, 0x02, 0x03) shl 8 shouldBe byteArrayOf(0x02, 0x03, 0x00)
     }
 
     test("shr") {
@@ -124,6 +127,10 @@ class ByteArrayBinaryTest : FunSpec({
         // 上書きされていること
         sut.shr(1, true) shouldBe byteArrayOf(0x7f, 0x80.toByte(), 0x52)
         sut shouldBe byteArrayOf(0x7f, 0x80.toByte(), 0x52)
+
+        // 大きなシフト
+        byteArrayOf(0x01, 0x02, 0x03) shr 24 shouldBe byteArrayOf(0x00, 0x00, 0x00)
+        byteArrayOf(0x01, 0x02, 0x03) shr 8 shouldBe byteArrayOf(0x00, 0x01, 0x02)
     }
 
     test("getBit") {
@@ -133,6 +140,10 @@ class ByteArrayBinaryTest : FunSpec({
         sut.getBit(1) shouldBe true
         sut.getBit(4) shouldBe false
         sut.getBit(8) shouldBe true
+        sut.getBit(15) shouldBe true
+
+        shouldThrow<IllegalArgumentException> { sut.getBit(-1) }
+        shouldThrow<IllegalArgumentException> { sut.getBit(16) }
     }
 
     test("getBitLe") {
@@ -142,6 +153,10 @@ class ByteArrayBinaryTest : FunSpec({
         sut.getBitLe(1) shouldBe true
         sut.getBitLe(4) shouldBe false
         sut.getBitLe(8) shouldBe false
+        sut.getBitLe(15) shouldBe false
+
+        shouldThrow<IllegalArgumentException> { sut.getBitLe(-1) }
+        shouldThrow<IllegalArgumentException> { sut.getBitLe(16) }
     }
 
     test("switchBit") {
