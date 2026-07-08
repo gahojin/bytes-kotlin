@@ -1,12 +1,12 @@
 package jp.co.gahojin.bytes
 
 fun ByteArray.getShort(index: Int): Short {
-    val s = (this[index] shl 8) or (this[index + 1].uint)
+    val s = (this[index].uint shl 8) or (this[index + 1].uint)
     return s.toShort()
 }
 
 fun ByteArray.getShortLe(index: Int): Short {
-    val s = (this[index].uint) or (this[index + 1] shl 8)
+    val s = (this[index].uint) or (this[index + 1].uint shl 8)
     return s.toShort()
 }
 
@@ -15,17 +15,17 @@ fun ByteArray.getUShort(index: Int): UShort = getShort(index).toUShort()
 fun ByteArray.getUShortLe(index: Int): UShort = getShortLe(index).toUShort()
 
 fun ByteArray.getInt(index: Int): Int {
-    return (this[index] shl 24) or
-            (this[index + 1] shl 16) or
-            (this[index + 2] shl 8) or
+    return (this[index].uint shl 24) or
+            (this[index + 1].uint shl 16) or
+            (this[index + 2].uint shl 8) or
             (this[index + 3].uint)
 }
 
 fun ByteArray.getIntLe(index: Int): Int {
     return (this[index].uint) or
-            (this[index + 1] shl 8) or
-            (this[index + 2] shl 16) or
-            (this[index + 3] shl 24)
+            (this[index + 1].uint shl 8) or
+            (this[index + 2].uint shl 16) or
+            (this[index + 3].uint shl 24)
 }
 
 fun ByteArray.getInt(index: Int, length: Int): Int {
@@ -43,24 +43,19 @@ fun ByteArray.getUIntLe(index: Int): UInt = getIntLe(index).toUInt()
 fun ByteArray.getUInt(index: Int, length: Int): UInt {
     require(length in 1..4) { "must be between 1 and 4: $length" }
 
-    val maxShift = (length - 1) shl 3
-    var offset = index
     var tmp = 0
-    for (shift in maxShift downTo 8 step 8) {
-        tmp = tmp or (this[offset++] shl shift)
+    for (i in 0 until length) {
+        tmp = (tmp shl 8) or (this[index + i].uint)
     }
-    tmp = tmp or (this[offset].uint)
     return tmp.toUInt()
 }
 
 fun ByteArray.getUIntLe(index: Int, length: Int): UInt {
     require(length in 1..4) { "must be between 1 and 4: $length" }
 
-    val maxShift = (length - 1) shl 3
-    var offset = index
-    var tmp = this[offset].uint
-    for (shift in 8 .. maxShift step 8) {
-        tmp = tmp or (this[++offset] shl shift)
+    var tmp = 0
+    for (i in (length - 1) downTo 0) {
+        tmp = (tmp shl 8) or (this[index + i].uint)
     }
     return tmp.toUInt()
 }
@@ -74,16 +69,16 @@ fun ByteArray.getInt24Le(index: Int): Int {
 }
 
 fun ByteArray.getUInt24(index: Int): UInt {
-    val t = (this[index] shl 16) or
-            (this[index + 1] shl 8) or
+    val t = (this[index].uint shl 16) or
+            (this[index + 1].uint shl 8) or
             (this[index + 2].uint)
     return t.toUInt()
 }
 
 fun ByteArray.getUInt24Le(index: Int): UInt {
     val t = (this[index].uint) or
-            (this[index + 1] shl 8) or
-            (this[index + 2] shl 16)
+            (this[index + 1].uint shl 8) or
+            (this[index + 2].uint shl 16)
     return t.toUInt()
 }
 
@@ -114,15 +109,7 @@ fun ByteArray.getLong(index: Int, length: Int): Long {
 }
 
 fun ByteArray.getLongLe(index: Int, length: Int): Long {
-    require(length in 1..8) { "must be between 1 and 8: $length" }
-
-    val maxShift = (length - 1) shl 3
-    var offset = index
-    var tmp = this[offset].ulong
-    for (shift in 8 .. maxShift step 8) {
-        tmp = tmp or (this[++offset].ulong shl shift)
-    }
-    return tmp.unsignedToSigned(length shl 3)
+    return getULongLe(index, length).unsignedToSigned(length shl 3)
 }
 
 fun ByteArray.getULong(index: Int): ULong = getLong(index).toULong()
@@ -132,23 +119,19 @@ fun ByteArray.getULongLe(index: Int): ULong = getLongLe(index).toULong()
 fun ByteArray.getULong(index: Int, length: Int): ULong {
     require(length in 1..8) { "must be between 1 and 8: $length" }
 
-    val maxShift = (length - 1) shl 3
-    var offset = index
     var tmp = 0L
-    for (shift in maxShift downTo 8 step 8) {
-        tmp = tmp or (this[offset++].ulong shl shift)
+    for (i in 0 until length) {
+        tmp = (tmp shl 8) or (this[index + i].ulong)
     }
-    return (tmp or (this[offset].ulong)).toULong()
+    return tmp.toULong()
 }
 
 fun ByteArray.getULongLe(index: Int, length: Int): ULong {
     require(length in 1..8) { "must be between 1 and 8: $length" }
 
-    val maxShift = (length - 1) shl 3
-    var offset = index
-    var tmp = this[offset].ulong
-    for (shift in 8 .. maxShift step 8) {
-        tmp = tmp or (this[++offset].ulong shl shift)
+    var tmp = 0L
+    for (i in (length - 1) downTo 0) {
+        tmp = (tmp shl 8) or (this[index + i].ulong)
     }
     return tmp.toULong()
 }
@@ -192,22 +175,16 @@ fun ByteArray.putIntLe(index: Int, source: Int) {
 fun ByteArray.putInt(index: Int, source: Int, length: Int) {
     require(length in 1..4) { "must be between 1 and 4: $length" }
 
-    val maxShift = (length - 1) shl 3
-    var offset = index
-    for (shift in maxShift downTo 8 step 8) {
-        this[offset++] = (source ushr shift).toByte()
+    for (i in (length - 1) downTo 0) {
+        this[index + i] = (source ushr ((length - 1 - i) shl 3)).toByte()
     }
-    this[offset] = source.toByte()
 }
 
 fun ByteArray.putIntLe(index: Int, source: Int, length: Int) {
     require(length in 1..4) { "must be between 1 and 4: $length" }
 
-    val maxShift = (length - 1) shl 3
-    var offset = index
-    this[offset] = source.toByte()
-    for (shift in 8 .. maxShift step 8) {
-        this[++offset] = (source ushr shift).toByte()
+    for (i in 0 until length) {
+        this[index + i] = (source ushr (i shl 3)).toByte()
     }
 }
 
@@ -260,22 +237,16 @@ fun ByteArray.putLongLe(index: Int, source: Long) {
 fun ByteArray.putLong(index: Int, source: Long, length: Int) {
     require(length in 1..8) { "must be between 1 and 8: $length" }
 
-    val maxShift = (length - 1) shl 3
-    var offset = index
-    for (shift in maxShift downTo 8 step 8) {
-        this[offset++] = (source ushr shift).toByte()
+    for (i in (length - 1) downTo 0) {
+        this[index + i] = (source ushr ((length - 1 - i) shl 3)).toByte()
     }
-    this[offset] = source.toByte()
 }
 
 fun ByteArray.putLongLe(index: Int, source: Long, length: Int) {
     require(length in 1..8) { "must be between 1 and 8: $length" }
 
-    val maxShift = (length - 1) shl 3
-    var offset = index
-    this[offset] = source.toByte()
-    for (shift in 8 .. maxShift step 8) {
-        this[++offset] = (source ushr shift).toByte()
+    for (i in 0 until length) {
+        this[index + i] = (source ushr (i shl 3)).toByte()
     }
 }
 
