@@ -6,23 +6,23 @@ java = "11"
 
 android-min-sdk = "23"
 
-android-compile-sdk = "36"
+android-compile-sdk = "37"
 
-android-gradle-plugin = "9.1.1"
+android-gradle-plugin = "9.4.1"
 
 detekt = "2.0.0-alpha.6"
 
-dokka = "2.2.0"
+dokka = "2.3.0-Beta"
 
-google-devtools-ksp = "2.3.11"
+google-devtools-ksp = "2.3.12"
 
-kotest = "6.2.4"
+kotest = "6.2.5"
 
-kotlin = "2.4.10"
+kotlin = "2.4.20"
 
 kotlin-serialization = "1.11.0"
 
-kotlinx-binary-compatibility-validator = "0.18.1"
+kotlinx-binary-compatibility-validator = "0.18.2"
 
 kover = "0.9.9"
 
