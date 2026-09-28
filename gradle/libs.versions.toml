@@ -22,8 +22,6 @@ kotlin = "2.4.20"
 
 kotlin-serialization = "1.11.0"
 
-kotlinx-binary-compatibility-validator = "0.18.2"
-
 kover = "0.9.9"
 
 maven-publish = "0.37.0"
@@ -55,8 +53,6 @@ kotest = { id = "io.kotest", version.ref = "kotest" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 
 kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-
-kotlinx-binary-compatibility-validator = { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "kotlinx-binary-compatibility-validator" }
 
 kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
 
